@@ -59,8 +59,8 @@ See [ARCHITECTURE.md](ARCHITECTURE.md) for the details and [ROADMAP.md](ROADMAP.
 Ported from the original `AlgoHandler.java`:
 
 - Distance of `0` km → `₱0` (no discount applied)
-- Otherwise → `₱13` base, plus `₱1.50` per km beyond the first `4` km
-- Discounted fare subtracts a further `₱2` for **Student**, **Senior**, and **PWD** passengers
+- Otherwise → `₱14` base, plus `₱2` per km beyond the first `4` km
+- Discounted fare subtracts a further `%20` for **Student**, **Senior**, and **PWD** passengers
 
 All arithmetic runs on integer centavos. `Money` rejects amounts that cannot be represented exactly.
 
