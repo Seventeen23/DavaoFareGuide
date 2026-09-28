@@ -16,28 +16,68 @@
 - [x] Add a route manifest generator script
 - [x] Cover fare logic, route parsing, and end-to-end fares with tests
 - [x] Stabilise the Pixel 4a emulator on this host
+- [x] Record route usage locally — increment a per-route counter each time a fare is calculated
+- [x] Add a `TripDao` / `TripRepository` to store that usage data
+- [x] Ship the home screen in release builds
+- [x] Add the legacy `loglo_launcher` app icon and the "DavaoFare Guide" label
+- [x] Replace the legacy discount deduction with a 20% discount (`discountPercent`) and delete
+      the legacy `LegacyAlgo` parity tests
+- [x] Build a release APK under the current fare spec (`build/app/outputs/flutter-apk/app-release.apk`)
 
 ## Next
 
-- [ ] Record route usage locally — increment a per-route counter each time a fare is calculated
-- [ ] Add a `TripDao` / `TripRepository` to store that usage data
-- [ ] Export the home screen to release builds
-- [ ] Add app icon and splash branding
-- [ ] Confirm Android release signing configuration
+- [ ] Confirm Android release signing configuration (build a signed APK/AAB for the Play Store)
+- [ ] Splash branding (currently ships the default Flutter splash)
+- [ ] Verify on a physical device — frame timings on the `lavapipe` emulator are not representative
+- [ ] Re-run `flutter analyze` + `flutter test` and rebuild the APK whenever fare rules change
 
 ## Most popular routes
 
-Popularity must be **derived from the routes the user actually rides**, not hardcoded or
-hand-picked. There is no curated popularity list, so the ranking reflects real local usage only.
+Popularity is **derived from the routes the user actually rides**, not hardcoded or hand-picked.
+There is no curated popularity list, so the ranking reflects real local usage only.
 
-Depends on the route usage recording in **Next**, so it cannot land first.
+Done:
 
-- [ ] Rank routes by locally recorded usage count, most-used first
-- [ ] Show a "Most popular routes" section on the home screen
-- [ ] Order ties by most recent use, then alphabetically for a stable result
-- [ ] Exclude routes the user has never ridden, so the section stays meaningful at first launch
-- [ ] Fall back to the default alphabetical list while usage data is still empty
-- [ ] Keep the section hidden rather than empty when there is no usage history
+- [x] Rank routes by locally recorded usage count, most-used first
+- [x] Show a "Most popular routes" section on the home screen
+- [x] Order ties by most recent use, then alphabetically for a stable result
+- [x] Exclude routes the user has never ridden, so the section stays meaningful at first launch
+- [x] Keep the section hidden rather than empty when there is no usage history
+
+## Fare model & distance precision (km algorithm)
+
+Offers the user feedback:
+
+> "the algorithm is fine — the data is the ceiling. The math (`abs(start − end)` +
+> billable-km + base/per-km) is the correct standard model and the storage is cleanly
+> normalized. The real accuracy limiter is whole-number km."
+
+Findings from an audit of all 69 route files (they are strictly monotonic: 0 duplicate km
+indices, 0 inversions, median length 14 km, 13 files do not start their file at km 0).
+
+Open work:
+
+- [ ] **Whole-km quantization is the biggest accuracy gap.** A trip of 4.9 km bills as 4 km
+      (₱14.00 instead of ≈₱15.80). The formula cannot be more precise than the data. Two
+      possible fixes:
+      - Re-curate route files with tenths of a km, **or**
+      - Store per-stop lat/lng and derive distance some other way. Note kmIndex is cumulative
+        *route* distance, which is closer to real jeepney fare computation than straight-line
+        distance, so coordinates are a larger effort for roughly the same result.
+- [ ] **Latent rounding bug in `percentOff` / `percentFrom`.** On non-round centavo totals the
+      two disagree (e.g. ₱0.07 total: `percentOff(20)` saves 1¢ → pay 6¢, `percentFrom(20)` →
+      pay 5¢). Unreachable today because every fare is a multiple of ₱1.00, but a footgun.
+      Canonical fix: `paid = total.percentFrom(20); deduction = total - paid;` (one source of
+      truth).
+- [ ] **`abs()` assumes one-way out-and-back lines.** Correct for today's data, but a future
+      loop/circuit route would need `min(|a − b|, totalKm − |a − b|)`.
+- [ ] **De-couple the fare engine from `kmIndex`.** `FareCalculator.calculate(startKm, endKm)`
+      hardcodes the storage notion of kmIndex. Cleaner: make the calculator pure on
+      `distanceKm` and move `|start − end|` into a route-level helper so a future distance
+      strategy (fractional km, coordinates) can slot in without touching pricing.
+- [ ] **Normalise the 13 route files that do not start at km 0.** Benign to fares (the baseline
+      cancels in `abs`), but shifts the route diagram and implies mixed curation. Normalise to
+      0 for consistency or document the mixed baselines.
 
 ## Later
 
