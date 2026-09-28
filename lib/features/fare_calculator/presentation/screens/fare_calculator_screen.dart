@@ -68,14 +68,19 @@ class _BookingBody extends ConsumerWidget {
       title: isOrigin ? 'Where do you board?' : 'Where do you get off?',
       selected: isOrigin ? selection.origin : selection.destination,
     );
-    if (stop == null) return;
+    if (stop == null) {
+      debugPrint('[PICK] isOrigin=$isOrigin -> dismissed, no stop');
+      return;
+    }
 
+    debugPrint('[PICK] isOrigin=$isOrigin -> got stop ${stop.name}');
     final notifier = ref.read(fareSelectionProvider(route.codeName).notifier);
     if (isOrigin) {
       notifier.setOrigin(stop);
     } else {
       notifier.setDestination(stop);
     }
+    debugPrint('[PICK] state now: ${ref.read(fareSelectionProvider(route.codeName))}');
   }
 
   /// Tapping a node on the diagram walks the selection forward: boarding
