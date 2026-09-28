@@ -1,0 +1,17 @@
+Tibungco,0
+U.M. College (Ilang),1
+Brgy. Ilang Basketball Court,2
+Panacan Public Market,3
+Sagrada Familia St. (Km. 13),4
+Going to Babak,5
+Marginal Wharf,6
+Old Crossing Airport,7
+Hizon Elem. School,8
+Alcantara & Sons,9
+Crossing Ubalde,10
+Alterado General Hospital,11
+Agdao Crossing,12
+Medical Mission Hospital,13
+Bureau of Fisheries,14
+Roxas/Aurora Corner,15
+Roxas/Recto Avenue,16

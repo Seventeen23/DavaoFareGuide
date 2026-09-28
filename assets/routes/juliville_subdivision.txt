@@ -1,0 +1,8 @@
+Juliville,0
+Pioneer,1
+Milan Store (Buhangin),2
+Watusi St. (Buhangin Road),3
+DLPC (Bajada),4
+Victoria Plaza,5
+Chinese School near G.Mall,6
+Bonifacio Street,7

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".MainFrame">
+
+    <ImageView
+        android:id="@+id/main_bg1"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/gradient1_top_box" />
+
+    <ImageButton
+        android:id="@+id/searched_search_button"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:background="@drawable/search_icon"
+        app:layout_constraintBottom_toBottomOf="@+id/main_bg1"
+        app:layout_constraintEnd_toEndOf="@+id/main_bg1"
+        app:layout_constraintHorizontal_bias="0.884"
+        app:layout_constraintStart_toStartOf="@+id/main_bg1"
+        app:layout_constraintTop_toTopOf="@+id/main_bg1"
+        app:layout_constraintVertical_bias="0.536" />
+
+    <ImageButton
+        android:id="@+id/searched_about_button"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:background="@drawable/about"
+        app:layout_constraintBottom_toBottomOf="@+id/main_bg1"
+        app:layout_constraintEnd_toEndOf="@+id/main_bg1"
+        app:layout_constraintHorizontal_bias="0.118"
+        app:layout_constraintStart_toStartOf="@+id/main_bg1"
+        app:layout_constraintTop_toTopOf="@+id/main_bg1"
+        app:layout_constraintVertical_bias="0.536" />
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="620dp"
+        android:overScrollMode="never"
+        android:scrollbars="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/imageView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/main_bg1"
+        app:layout_constraintVertical_bias="0.0">
+
+        <LinearLayout
+            android:id="@+id/linear_layout3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="25dp">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="114dp"
+                android:padding="3dp">
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginEnd="30dp"
+                    android:fontFamily="@font/glacial_bold"
+                    android:gravity="center"
+                    android:text="Welcome Back!"
+                    android:textColor="#000000"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="336dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textView4"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="27dp"
+                    android:layout_marginEnd="30dp"
+                    android:fontFamily="@font/glacial_bold"
+                    android:gravity="center"
+                    android:text="Select a Jeepney"
+                    android:textAllCaps="true"
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@drawable/gradient1_bot_box"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:layout_marginStart="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+        app:layout_constraintEnd_toEndOf="@+id/imageView2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/imageView2"
+        app:layout_constraintTop_toTopOf="@+id/imageView2"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/white_bot_box" />
+
+    <ImageButton
+        android:id="@+id/searched_home_button"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:background="@drawable/home_icon"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+        app:layout_constraintEnd_toEndOf="@+id/imageView3"
+        app:layout_constraintHorizontal_bias="0.246"
+        app:layout_constraintStart_toStartOf="@+id/imageView3"
+        app:layout_constraintTop_toTopOf="@+id/imageView3"
+        app:layout_constraintVertical_bias="0.229" />
+
+    <ImageButton
+        android:id="@+id/searched_user_button"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:background="@drawable/account_icon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/imageView3"
+        app:layout_constraintVertical_bias="0.23" />
+
+    <ImageButton
+        android:id="@+id/searched_history_button"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:background="@drawable/fare_record"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+        app:layout_constraintEnd_toEndOf="@+id/imageView3"
+        app:layout_constraintHorizontal_bias="0.753"
+        app:layout_constraintStart_toStartOf="@+id/imageView3"
+        app:layout_constraintTop_toTopOf="@+id/imageView3"
+        app:layout_constraintVertical_bias="0.229" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,30 @@
+Vinzon Elementary School,0
+Highlander Packing House,1
+Purok Crossing,2
+Purok Orchids,3
+Tagakpan Catholic Church,4
+Edel Canedo Residence,5
+Salcedo Residence,6
+Vic Obeso Motor,7
+Mundo Residence,8
+Bakaro Poultry,9
+Quarry Basketball Court,10
+Old Tagakpan Road,11
+UM Tugbok,12
+Dacudao Farm,13
+Mintal Elem. School,14
+Mintal Catholic Church,15
+Trese Cat. Pequeno,16
+Crossing Cat. Pequeno,17
+Dayrit Farm,18
+Reyes Residence,19
+Cal's Residence Shop,20
+Ulas,21
+DXSS,22
+Tahimik Avenue,23
+Matina Crossing,24
+ABS-CBN Junction,25
+SM City,26
+Ecoland Terminal,27
+Almendras Gym,28
+Roxas Avenue,29

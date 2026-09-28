@@ -1,0 +1,24 @@
+Mulig,0
+PV Game Farm,1
+Mulig Elem. School,2
+Purok 5,3
+Sta. Cruz Chapel, Bangkas HTS,4
+Batolusa Elem. School JCT,5
+Libby-Lubogan JCT,6
+Toril Gallera,7
+Crossing Bayabas,8
+Vales JCT,9
+Pepsi Cola Bottling,10
+Better Living Subdivision,11
+Bago Crossing,12
+Puan Crossing,13
+Ulas Crossing,14
+Royal Valley Bangkal,15
+Boundary Matina-Talomo,16
+Matina Brgy. Hall,17
+La Suerte Gallera,18
+Tulip Drive,19
+Malayan Crossing,20
+Bankerohan,21
+Apo View Hotel,22
+Roxas Avenue,23

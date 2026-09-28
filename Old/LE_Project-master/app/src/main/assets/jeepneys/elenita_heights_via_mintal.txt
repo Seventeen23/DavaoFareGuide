@@ -1,0 +1,17 @@
+Elenita Heights,0
+Junction Tacunan & Elenita Roads,1
+Mintal Catholic Church,2
+Trese Catalunan Pequeno,3
+Crossing Catalunan Pequeno,4
+Dayrit Farm,5
+Reyes Residence,6
+Cal's Repair Shop,7
+Ulas,8
+DXSS,9
+Tahimik Avenue,10
+Matina Crossing,11
+ABS-CBN Junstion (Matina),12
+SM City,13
+Ecoland Terminal Crossing,14
+Almendras Gym,15
+Roxas Avenue,16

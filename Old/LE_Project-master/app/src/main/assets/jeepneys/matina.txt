@@ -1,0 +1,11 @@
+Matina,0
+Metrobank Matina,1
+La Suerte Gallera,2
+Tulip Drive,3
+McDonald's (Ateneo),4
+Bankerohan,5
+SP Building (Pichon),6
+Avon (CM Recto),7
+DSWD (R. Magsaysay Avenue),8
+UM (Bangoy),9
+Agdao,10

@@ -1,0 +1,13 @@
+Sasa,0
+Sasa Fly Over going to babak,1
+Brgy. Hall Sasa,2
+Old Airport,3
+Hizon Elementary School,4
+Junction Caltex,5
+Damosa,6
+DCWD,7
+Buhangin Fly Over,8
+Bacaca Road,9
+V. Mapa. St.,10
+PLDT Ponciano,11
+City Hall,12

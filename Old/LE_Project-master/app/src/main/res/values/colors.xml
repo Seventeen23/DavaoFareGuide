@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="grad_blue">#0097B2</color>
+    <color name="grad_green">#7ED957</color>
+    <color name="pale_white">#F7FFEE</color>
+</resources>

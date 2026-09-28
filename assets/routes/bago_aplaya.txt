@@ -1,0 +1,9 @@
+Bago Aplaya,3
+DXSS (Bangkal),4
+Tahimik Avenue,5
+Matina Crossing,6
+ABS-CBN Junction,7
+SM City Davao,8
+Ecoland Terminal Crossing,9
+Almendras Gym,10
+Roxas Avenue,11

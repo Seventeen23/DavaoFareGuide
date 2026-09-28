@@ -1,0 +1,25 @@
+Inawayan Brgy. Hall,0
+Caltex,1
+Cargil Headquarters,2
+Binugao Brgy. Hall,3
+Magnolia Dressing Plant,4
+JCT Catigan (TF Davao),5
+Lipadas Bridge,6
+Gaisano Grand Toril,7
+Crossing Bayabas,8
+Vales JCT,9
+Pepsi Cola Bottling,10
+Better Living,11
+Bago Crossing,12
+Puan Crossing,13
+Ulas Crossing,14
+Royal Valley Bangkal,15
+Boundary Matina-Talomo,16
+Matina Brgy. Hall,17
+La Suerte Gallera,18
+Tulip Drive,19
+Ma-a Crossing,20
+Sandawa Crossing,21
+Quirino Avenue,22
+Bonifacio Street,23
+Roxas Avenue,24

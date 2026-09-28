@@ -1,0 +1,10 @@
+Ma-a,3
+Midland Village,4
+Bachelor Bus Garage,5
+Ma-a Crossing,6
+Sandawa,7
+City Health (Magallanes),8
+AVON Office (CM Recto),9
+MSSD,10
+Leon Garcia Street,11
+Agdao (Dalisay),12

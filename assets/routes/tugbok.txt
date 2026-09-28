@@ -1,0 +1,32 @@
+Magsaysay/Villafuerte,0
+Angel Funeral Parlor,1
+San Roque Chapel,2
+Riverside,3
+Puting Bato,4
+Crossing Los Amigos,5
+Catallas Residence,6
+Talomo River Bridge,7
+Quarry Bridge,8
+Old Tagakpan Road,9
+UM Tugbok,10
+Dacudao Farm,11
+Mintal Elem. School,12
+Mintal Catholic Church,13
+Trese Cat. Pequeno,14
+Crossing Cat. Pequeno,15
+Dayrit Farm,16
+Reyes Residence,17
+Cal's Residence Shop,18
+Ulas,19
+DXSS,20
+Tahimik Avenue,21
+Matina Crossing,22
+ABS-CBN Junction,23
+Kar Asia Bldg.,24
+Crossing Maa,25
+Generoso Bridge,26
+El Gusto Family Lodge,27
+Suico Center Recto,28
+Madrazo Fruit Stand,29
+Davao Doctors Hospital,30
+Bankerohan,31

@@ -1,0 +1,20 @@
+Bangkas Brgy. Hall,0
+Prk 4 Bangkas,1
+Libby-Lubogan JCT,2
+Toril Gallera,3
+Crossing Bayabas,4
+Vales Junction,5
+Pepsi Cola Bottling,6
+Better Living Subdivision,7
+Bago Crossing,8
+Puan Crossing,9
+Ulas Crossing,10
+Royal Valley Bangkal,11
+Boundary Matina-Talomo,12
+Matina Brgy. Hall,13
+La Suete Gallera,14
+Tulip Drive,15
+Malayan College,16
+Bankerohan,17
+Apo View Hotel,18
+Roxas Avenue,19

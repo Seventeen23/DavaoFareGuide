@@ -1,0 +1,15 @@
+Sasa,0
+Sasa Overpass,1
+Philippine Ports Authority,2
+Legaspi Oil Corp.,3
+Sto. Domingo Village,4
+BPI (Insular Village),5
+Guadalupe Village,6
+Lanang Country Club,7
+DMC Overpass,8
+Prince Court,9
+Agdao Fly Over (EXIT),10
+Magsaysay Park,11
+Metrobank (R. Magsaysay Ave.),12
+Palma Gil/Ponciano,13
+City Health (Pichon/Magallanes),14

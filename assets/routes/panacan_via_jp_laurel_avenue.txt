@@ -1,0 +1,14 @@
+Panacan,0
+Sagrada Familia St. (Km. 13),1
+Going to Babak,2
+Marginal Wharf,3
+Old Crossing Airport,4
+Hizon Elem. School,5
+Alcantara & Sons,6
+DAMOSA,7
+DCWD (Bajada),8
+Dacudao Fly Over,9
+Redemptorist Church,10
+Cor. Palma Gil (Obrero),11
+PLDT (Ponciano),12
+Roxas/Gomez,13

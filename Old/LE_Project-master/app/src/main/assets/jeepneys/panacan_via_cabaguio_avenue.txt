@@ -1,0 +1,15 @@
+Panacan,0
+Sagrada Familia St. (Km. 13),1
+Going to Babak,2
+Marginal Wharf,3
+Old Crossing Airport,4
+Hizon Elem. School,5
+Alcantara & Sons,6
+DAMOSA,7
+DCWD (Bajada),8
+Esmeralda Mkt. Garden (Cabaguio),9
+Metro Bank (Agdao Fly Over),10
+Sulpicio Lines (L. Garcia),11
+Suazo/Magsaysay Sts.,12
+Cor. Aurora/Roxas,13
+Cor.Roxas/Recto,14

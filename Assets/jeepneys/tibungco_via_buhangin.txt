@@ -1,0 +1,18 @@
+Tibungco,0
+U.M. College (Ilang),1
+Ilang Basketball Court,2
+Bacnotan Cement,3
+Panacan Public Market,4
+Mindanao Coco Corp.,5
+Landmark III,6
+Davao Int'l Airport (Div Road),7
+Camp Catitipan,8
+R. Tecson Construction (Div. Road),9
+Caltex Gas Station (Div. Road),10
+Waling-Waling St. (Div. Road),11
+Pag-asa St. (Buhangin Road),12
+Dacudao Fly Over (Entrance),13
+Agdao Public Market,14
+Sulpicio Lines(L. Garcia),15
+Suazo corner Quezon Blvd.,16
+Roxas corner Gomez Sts.,17

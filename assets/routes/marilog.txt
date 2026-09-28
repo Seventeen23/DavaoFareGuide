@@ -1,0 +1,40 @@
+Marilog,0
+Marilog Health Center,2
+Magsaysay Elem. School/Cross. Quimasog,4
+Brgy. Hall-Marilog,7
+San Isidro labrador Church,8
+Lumondao Centro Market,9
+Crossing Suawan,15
+Tamugan National High School,20
+Nature Adventure/Lacson,25
+TF Checkpoint/Crossing Lamanan,29
+Magsaysay/Vilafuerte/Calinan,30
+Angel Funeral Parlor,31
+San Roque Chapel,32
+Crossing Riverside,33
+Puting Bato,34
+Crossing Los Amigos,35
+Catallas Residence,36
+Talomo River Bridge,37
+Quarry Bridge,38
+Old Tagakpan Road,39
+UM Tugbok,40
+Dacudao Farm,41
+Mintal Elem. School,42
+Mintal Catholic Church,43
+Trese Cat. Pequeno,44
+Crossing Cat. Pequeno,45
+Dayrit Farm,46
+Reyes Residence,47
+Cal's Residence Shop,48
+Ulas,49
+DXSS,50
+Tahimik Avenue,51
+Matina Crossing,52
+ABS-CBN Junction,53
+SM City,54
+Ecoland Terminal,55
+Almendras Gym,56
+Roxas Avenue,57
+Madrazo Fruit Stand,58
+Bankerohan,59

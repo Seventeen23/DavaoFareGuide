@@ -1,0 +1,10 @@
+Jade Valley,0
+Robinson Highlands,1
+Spring Valley (Crossing),2
+Metro Bank (Buhangin),3
+Fly Over (Dacudao),4
+Redemptorist Church,5
+Cor. Palma Gil (Obrero),6
+Quirino Avenue (Central Bank),7
+San Pedro Extension,8
+City Health (Magallanes),9

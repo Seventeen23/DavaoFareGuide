@@ -1,0 +1,12 @@
+Ulas,0
+Caltex(near Bridge),1
+Flores Subd.,2
+Balusong Avenue,3
+6th Avenue,4
+Royal Pines(McArthur),5
+DCWD Matina,6
+UM Matina,7
+Quirino/San Pedro,8
+BSP,9
+Suazo/Sta Ana Avenue,10
+Magsaysay,11

@@ -1,0 +1,14 @@
+Matina Aplaya,0
+Baqui (Punta Dumalag),1
+Matina Aplaya Brgy. Hall,2
+Petalcorin Res. (Matina Aplaya),3
+Sto. Nino (Matina),4
+DILG Office,5
+Caltex Gas Station (Matina),6
+SURECO Cpd. (Matina),7
+Generoso Bridge II,8
+City Hall Drive (Pichon),9
+Recto Ave. cor. Palma Gil Sts.,10
+Magsaysay cor. Guerrero Sts.,11
+Magsaysay cor. F. Bangoy,12
+Cor. Aquino/Leon Garcia,13

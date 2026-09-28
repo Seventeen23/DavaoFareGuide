@@ -1,0 +1,8 @@
+Buhangin,0
+Orange Grove Hotel,1
+Watusi St. (Buhangin),2
+Dacudao Fly Over (Entrance),3
+Redemptorist Church,4
+Cor. Palma Gil St. (Obrero),5
+Central Bank (Quirino),6
+San Pedro Extension,7

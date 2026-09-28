@@ -1,0 +1,14 @@
+Callawa,0
+Lapanday Engineering Dept.,1
+Km. Post #13,2
+Crossing Balon,3
+Tigatto (Crossing Rodriguez),5
+Alta Monte Subd.,6
+Panorama (Nick Plaza Res.),7
+Pioneer,8
+Milan Store (Buhangin),9
+Watusi Road (Buhangin),10
+Redemptorist Church,11
+Cor. Palma Gil St. (Obrero),12
+C. Bangoy St. (Ponciano),13
+Bonifacio St.,14

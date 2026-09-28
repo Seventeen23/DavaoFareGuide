@@ -1,0 +1,14 @@
+Talomo,0
+Talomo Centro/Cemento (Boundary),1
+San Lorenzo Parish,2
+Ulas Crossing,3
+Royal Valley(Bangkal),4
+Union St.(Bangkal),5
+Matina Market,6
+Junction McArthur/Quimpo Blvd.,7
+Shell Station(Matina),8
+NCCC Mall,9
+Generoso Bridge II(Flying V),10
+Grand Menseng Hotel,11
+Palma Gil/Recto Corner,12
+Corner Recto/Roxas,13

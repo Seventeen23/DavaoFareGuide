@@ -1,0 +1,26 @@
+Catigan Brgy. Hall,0
+EVN Farm,1
+San Isisdo Labrador Chapel,2
+Electric Post # 218300749,3
+Electric Post # 081172,4
+Prk 5 Sirawan,5
+JCT Catigan (TF Davao),6
+Lipadas Bridge,7
+Gaisano Grand Toril,8
+Crossing Bayabas,9
+Vales JCT,10
+Pepsi Cola Bottling,11
+Better Living,12
+Bago Crossing,13
+Puan Crossing,14
+Ulas Crossing,15
+Royal Valley Bangkal,16
+Boundary Matina-Talomo,17
+Matina Brgy. Hall,18
+La Suerte Gallera,19
+Tulip Drive,20
+Ma-a Crossing,21
+Sandawa Crossing,22
+Quirino Avenue,23
+Bonifacio Street,24
+Roxas Avenue,25

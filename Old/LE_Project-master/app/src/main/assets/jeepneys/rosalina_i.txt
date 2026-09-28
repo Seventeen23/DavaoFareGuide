@@ -1,0 +1,11 @@
+Rosalina I,3
+Central Park Subd.,4
+Tahimik Avenue,5
+GSIS,6
+Davao Executive Homes,7
+SM City Davao,8
+Philhealth,9
+Agro Industrial Foundation,10
+Almendras Gym,11
+Crossing Roxas Avenue,12
+Monteverde Avenue,13

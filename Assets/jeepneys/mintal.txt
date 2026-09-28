@@ -1,0 +1,13 @@
+Mintal,3
+Dayrit Farm,4
+Reyes Residence,5
+Cal's Repair Shop,6
+Ulas,7
+DXSS,8
+Tahimik Avenue,9
+Matina Crossing,10
+ABS-CBN Junstion (Matina),11
+SM City,12
+Ecoland Terminal Crossing,13
+Almendras Gym,14
+Roxas Avenue,15

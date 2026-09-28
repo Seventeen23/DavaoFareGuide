@@ -1,0 +1,20 @@
+Indangan,0
+Abapo Residence,1
+Molave Homes,2
+Jardin Residence,3
+San Andres Chapel,4
+Magno Farm,5
+Dacudao Village,6
+Polia Residence,7
+El Dorado Farm,8
+Country Homes,9
+Kingdom Hall (Jehovah),10
+Buhagin Memorial Park,11
+Milan,12
+Watusi St.,13
+DLPC Bajada,14
+Victoria Plaza,15
+Gaisano Mall,16
+Regina Complex,17
+corner San Pedro & Inigo (Anda) Sts.,18
+Bankerohan,19

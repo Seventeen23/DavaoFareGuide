@@ -1,0 +1,11 @@
+SM City (Ecoland Davao City),0
+Philippine Banking Institute (Near CSC),1
+Casa Leticia (Maya Street),2
+Tecarro Technical Institute,3
+Manor Hotel (Pichon Street),4
+Oro Derm Bldg. (Corner Rizal Street/Claveria),5
+BDO Magsaysay (Near Ateneo De Davao University),6
+NCCC Uyanguren,7
+Suazo Street Corner Quezon Boulevard,8
+Rizal Street Extension Corner Quezon Boulevard,9
+Bolton Bridge II,10

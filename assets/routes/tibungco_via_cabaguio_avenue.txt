@@ -1,0 +1,19 @@
+Tibungo,0
+Tibungco Overpass,1
+U.M. College (Ilang),2
+Bacnotan Cement,3
+Panacan Public Market,4
+Sagrada Familia St. (Km. 13),5
+Going to Babak,6
+Marginal Wharf,7
+Old Crossing Airport,8
+Hizon Elem. School,9
+Alcantara & Sons,10
+DAMOSA,11
+DCWD (Bajada),12
+Esmeralda Mkt. Garden (Cabaguio),13
+Metro Bank (Agdao Fly Over),14
+Sulpicio Lines (L. Garcia),15
+Suazo/Magsaysay Sts.,16
+Cor. Aurora/Roxas,17
+Cor.Roxas/Recto,18

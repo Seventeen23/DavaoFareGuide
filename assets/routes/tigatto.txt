@@ -1,0 +1,12 @@
+Tigatto,0
+Binoring,1
+Rodriguez Elem. School,2
+Alta Monte Subd.,3
+Panorama,4
+Pioneer,5
+Milan Store (Buhangin),6
+Watusi St. (Buhangin Road),7
+Redemptorist Church,8
+Cor. Palma Gil St. (Obrero),9
+C. Bangoy St. (Ponciano),10
+Bonifacio St.,11

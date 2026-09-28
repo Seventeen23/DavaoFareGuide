@@ -1,0 +1,9 @@
+Country Homes Subd.,3
+Countryville Exec. Homes,4
+Vila Park Subd.,5
+Milan Store (Buhangin),6
+Watusi Road (Buhangin),7
+Redemptorist Church,8
+Cor. Palma Gil St. (Obrero),9
+C. Bangoy St. (Ponciano),10
+Bonifacio St.,11

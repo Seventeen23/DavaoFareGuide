@@ -1,0 +1,33 @@
+Tamugan National High School,0
+Nature Adventure/Lacson,5
+TF Checkpoint/Crossing Lamanan,9
+Magsaysay/Vilafuerte/Calinan,10
+Angel Funeral Parlor,11
+San Roque Chapel,12
+Crossing Riverside,13
+Puting Bato,14
+Crossing Los Amigos,15
+Catallas Residence,16
+Talomo River Bridge,17
+Quarry Bridge,18
+Old Tagakpan Road,19
+UM Tugbok,20
+Dacudao Farm,21
+Mintal Elem. School,22
+Mintal Catholic Church,23
+Trese Cat. Pequeno,24
+Crossing Cat. Pequeno,25
+Dayrit Farm,26
+Reyes Residence,27
+Cal's Residence Shop,28
+Ulas,29
+DXSS,30
+Tahimik Avenue,31
+Matina Crossing,32
+ABS-CBN Junction,33
+SM City,34
+Ecoland Terminal,35
+Almendras Gym,36
+Roxas Avenue,37
+Madrazo Fruit Stand,38
+Bankerohan,39

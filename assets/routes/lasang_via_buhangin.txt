@@ -1,0 +1,28 @@
+Lasang,0
+Crossing Tambongan,1
+Crossing Lelawan,2
+Baclayon Plantation,3
+Bunawan Plywood,4
+Bunawan Elem. School,5
+Before Bunawan Elem. School,6
+Northern Hills Sawmill,7
+Mahayag,8
+Manpower RMTC,9
+Davao Extension Lumber,10
+Tibungco Elem. School,11
+U.M. College (Ilang),12
+Bacnotan Cement,13
+Sarmiento,14
+Panacan Public Market,15
+Mindanao Coco Corp.,16
+Land Mark III,17
+Davao Int'l Airport,18
+R. Tecson Const. (Km. 8),19
+Caltex Gasoline Station,20
+Waling-Waling St. (Diversion Road),21
+Pag-asa St. (Buhangin Road),22
+Dacudao Fly Over,23
+Cerbantes/Veloso Sts.,24
+Garden of Oases (Porras St.),25
+Cor. Villa Abrille/Guerrero Sts.,26
+Roxas/Gomez Sts.,27

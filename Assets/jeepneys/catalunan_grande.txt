@@ -1,0 +1,8 @@
+Catalunan Grande,3
+Tahimik Avenue,4
+Matina Crossing,5
+Matina (ABS-CBN Junction),6
+SM City,7
+Ecoland Terminal Crossing,8
+San Pedro Extension (PNB),9
+Roxas Avenue,10

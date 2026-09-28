@@ -1,0 +1,16 @@
+Rosalina III,0
+Crossing Capili Subdivision,1
+Green Land,2
+DCWD Well 10 (Puan),3
+St. Felix Hospital,4
+DCWD Well 14 (Puan),5
+Ulas Police Outpost,6
+PLDT Bangkal,7
+DENR Bangkal,8
+Matina Public Market,9
+Junction Q.Blvd & McArthur Hi-way,10
+Golden Hardware (Davao Memorial),11
+NCCC Mall Ma-a,12
+Generoso Bridge II,13
+People's Park,14
+Aldevinco (Roxas Avenue),15

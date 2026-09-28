@@ -1,0 +1,23 @@
+Bunawan,0
+Bunawan Elementary School,1
+Bunawan Plywood,2
+Northern Hills Sawmill,3
+Mahayag,4
+Manpower RMTC,5
+Davao Extension Lumber,6
+Tibungco Elem. School,7
+U.M. College (Ilang),8
+Ilang Basketball Court,9
+Bacnotan Cement,10
+Panacan Public Market,11
+Sagrada Familia St. (Km. 13),12
+Going to Babak,13
+Marginal Wharf,14
+Old Crossing Airport,15
+Hizon Elem. School,16
+Alcantara & Sons,17
+Crossing Ubalde,18
+Alterado General Hospital,19
+Magsaysay Park,20
+Jacinto Crossing,21
+Roxas Avenue,22

@@ -1,0 +1,12 @@
+Landmark III,0
+Davao Int'l Airport (Div Road),1
+Camp Catitipan,2
+R. Tecson Construction (Div. Road),3
+Caltex Gas Station (Div. Road),4
+Waling-Waling St. (Div. Road),5
+Pag-asa St. (Buhangin Road),6
+Dacudao Fly Over (Entrance),7
+Redemptorist Church,8
+Cor. Palma Gil St. (Obrero),9
+DLPC (Ponciano),10
+Cor. Rizal St. & CM Recto,11

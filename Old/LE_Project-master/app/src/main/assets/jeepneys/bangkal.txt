@@ -1,0 +1,13 @@
+Bangkal,0
+Peace Avenue,1
+DLC Bldg. (McArthur Hi-way,Balusong),2
+San Antonio Vill (infront GSIS),3
+Davao Exec. Homes (Quimpo Blvd.),4
+SM City Davao,5
+Philhealth Office,6
+Agro School Foundation,7
+Almendras Gym,8
+BPI (Claveria),9
+Guerrero cor. Magsaysay Ave.,10
+F. Bangoy cor. Magsaysay Ave.,11
+Magsaysay Ave. (Park),12

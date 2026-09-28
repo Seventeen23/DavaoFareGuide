@@ -1,0 +1,29 @@
+Tibuloy Brgy. Hall,0
+Electric Post # 0417140 Tibuloy,1
+Electric Post # 0291183 Prk 1 Tibuloy,2
+Electric Post # 0450761 Prk 1 Tibuloy,3
+Electric Post # 0450708,4
+Caltex,6
+Cargill Headquarters,7
+Binugao Brgy. Hall,8
+Magnolia Dressing Plant,9
+JCT Catigan (TF Davao),10
+Lipadas Bridge,11
+Gaisano Grand Toril,12
+Crossing Bayabas,13
+Vales JCT,14
+Pepsi Cola Bottling,15
+Better Living,16
+Bago Crossing,17
+Puan Crossing,18
+Ulas Crossing,19
+Royal Valley Bangkal,20
+Boundary Matina-Talomo,21
+Matina Brgy. Hall,22
+La Suerte Gallera,23
+Tulip Drive,24
+Ma-a Crossing,25
+Sandawa Crossing,26
+Quirino Avenue,27
+Bonifacio Street,28
+Roxas Avenue,29

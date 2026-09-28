@@ -1,0 +1,45 @@
+name: davao_jeepney
+description: "Davao Jeepney fare calculator and route guide"
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.13.1
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+
+  # State management
+  flutter_riverpod: ^3.0.0
+
+  # Navigation
+  go_router: ^17.0.0
+
+  # Persistence
+  drift: ^2.30.0
+  sqlite3_flutter_libs: ^0.5.42
+  path: ^1.9.1
+  path_provider: ^2.1.5
+
+  # Utilities
+  intl: ^0.20.3
+  equatable: ^2.0.7
+  collection: ^1.19.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^6.0.0
+  drift_dev: ^2.30.0
+  build_runner: ^2.7.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/routes/

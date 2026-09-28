@@ -1,0 +1,9 @@
+Catitipan,0
+U-One Trading (Buhangin),1
+NHA Crossing (San Antonio, Buhangin),2
+Buhangin Brgy. Hall,3
+Before Watusi St.,4
+Dacudao Fly Over,5
+Toyozu School (Dacudao),6
+Agdao Fly Over,7
+Magsaysay Park,8

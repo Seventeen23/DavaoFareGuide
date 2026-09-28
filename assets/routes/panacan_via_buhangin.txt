@@ -1,0 +1,15 @@
+Panacan,0
+Mindanao Coco Corp. (Div. Road),1
+Landmark III,2
+Davao Int'l Airport (Div Road),3
+Camp Catitipan,4
+R. Tecson Construction (Div. Road),5
+Caltex Gas Station (Div. Road),6
+Waling-Waling St. (Div. Road),7
+Pag-asa St. (Buhangin Road),8
+Dacudao Fly Over (Entrance),9
+China Bank (neae EMCOR Bajada),10
+V.Mapa St./Bajada,11
+Phil Post Office,12
+CM Recto/Palma Gil,13
+Ilustre,14

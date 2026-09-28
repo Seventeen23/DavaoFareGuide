@@ -1,0 +1,23 @@
+Bunawan,0
+Bunawan Elementary School,1
+Bunawan Plywood,2
+Northern Hills Sawmill,3
+Mahayag,4
+Manpower RMTC,5
+Davao Extension Lumber,6
+Tibungco Elem. School,7
+U.M. College (Ilang),8
+Bacnotan Cement,9
+Panacan Public Market,10
+Mindanao Coco Corp.,11
+Land Mark III,12
+Davao Int'l Airport,13
+Camp Catitipan,14
+R. Tecson Const. (Km. 8),15
+Caltex Gasoline Station,16
+Waling-Waling St. (Diversion Road),17
+Pag-asa St. (Buhangin Road),18
+Dacudao Fly Over,19
+Cerbantes/Veloso Sts.,20
+Cor. Villa Abrille/Guerrero Sts.,21
+Roxas/Gomez Sts.,22

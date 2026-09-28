@@ -1,0 +1,13 @@
+Sasa,0
+Sasa Fly Over,1
+Barangay Hall,2
+Old Airport,3
+Hizon Elem. School,4
+Junction Caltex/Bajada/R. Castillo,5
+Brgy. Lapu-Lapu/R. Castillo,6
+Cor. Alterado Hospital/R. Castillo,7
+Overpass Agdao,8
+Monteverde/L. Garcia,9
+ML Leon St./Blvd.,10
+Rizal Extn. Cor. Quezon Blvd.,11
+Roxas Avenue/Recto Avenue,12
