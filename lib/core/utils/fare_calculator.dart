@@ -3,10 +3,10 @@ import 'money.dart';
 
 class FareRules {
   const FareRules({
-    this.baseFare = const Money(1300),
+    this.baseFare = const Money(1400), // Base fare for the first 4 kilometers. 14.00 
     this.includedKilometers = 4,
-    this.perKilometer = const Money(150),
-    this.discountedCategoryDeduction = const Money(200),
+    this.perKilometer = const Money(200), // +2.00 per kilometer after the first 4 kilometers.
+    this.discountedCategoryDeduction = const Money(200), // This is a %. Dont be fooled lol
   });
 
   final Money baseFare;
