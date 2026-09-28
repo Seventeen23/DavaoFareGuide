@@ -110,7 +110,7 @@ class FareEstimateCard extends StatelessWidget {
                     '${rules.baseFare.pesos.toStringAsFixed(2)} base '
                     '(first ${rules.includedKilometers} km)  ·  '
                     '+${rules.perKilometer.pesos.toStringAsFixed(2)}/km  ·  '
-                    '−${rules.discountedCategoryDeduction.pesos.toStringAsFixed(2)} discount',
+                    '−${rules.discountPercent}% discount',
                     style: textTheme.bodySmall?.copyWith(
                       color: Colors.white.withValues(alpha: 0.6),
                       fontSize: 11.5,

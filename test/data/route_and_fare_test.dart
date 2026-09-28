@@ -116,9 +116,9 @@ void main() {
 
       expect(estimate, isNotNull);
       expect(estimate!.distanceKm, 5);
-      expect(estimate.regular.total, const Money(1450));
-      expect(estimate.discounted.total, const Money(1250));
-      expect(estimate.saving, const Money(200));
+      expect(estimate.regular.total, const Money(1600));
+      expect(estimate.discounted.total, const Money(1280));
+      expect(estimate.saving, const Money(320));
       expect(notifier.state.isComplete, isTrue);
     });
 
@@ -285,7 +285,7 @@ void main() {
         expect(result.distanceKm, 5, reason: category.label);
         expect(
           result.total.pesos,
-          closeTo(category.isDiscounted ? 12.5 : 14.5, 0.001),
+          closeTo(category.isDiscounted ? 12.8 : 16.0, 0.001),
           reason: category.label,
         );
       }

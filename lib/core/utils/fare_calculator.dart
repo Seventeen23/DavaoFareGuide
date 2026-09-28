@@ -6,13 +6,13 @@ class FareRules {
     this.baseFare = const Money(1400), // Base fare for the first 4 kilometers. 14.00 
     this.includedKilometers = 4,
     this.perKilometer = const Money(200), // +2.00 per kilometer after the first 4 kilometers.
-    this.discountedCategoryDeduction = const Money(200), // This is a %. Dont be fooled lol
+    this.discountPercent = 20, 
   });
 
   final Money baseFare;
   final int includedKilometers;
   final Money perKilometer;
-  final Money discountedCategoryDeduction;
+  final int discountPercent;
 }
 
 class FareBreakdown {
@@ -51,6 +51,7 @@ class FareCalculator {
     final billableKm =
         distanceKm > rules.includedKilometers ? distanceKm - rules.includedKilometers : 0;
 
+    // Base case? Just incase. A bug might show if user pick the same route twice. Though I dont know what will happen
     if (distanceKm == 0) {
       return FareBreakdown(
         distanceKm: 0,
@@ -65,7 +66,8 @@ class FareCalculator {
 
     final baseFare = rules.baseFare;
     final distanceCharge = rules.perKilometer * billableKm;
-    final deduction = category.isDiscounted ? rules.discountedCategoryDeduction : Money.zero;
+    final total = baseFare + distanceCharge;
+    final deduction = category.isDiscounted ?  total.percentOff(rules.discountPercent) : Money.zero;
 
     return FareBreakdown(
       distanceKm: distanceKm,
@@ -73,7 +75,7 @@ class FareCalculator {
       baseFare: baseFare,
       distanceCharge: distanceCharge,
       deduction: deduction,
-      total: baseFare + distanceCharge - deduction,
+      total: total - deduction, // Deduction is the % value of the total so we just sub it.
       category: category,
     );
   }
