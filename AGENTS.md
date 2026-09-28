@@ -48,6 +48,9 @@ computes a fare between two stops on a fixed route. Do **not** modify anything u
   Clear stale locks from `~/.android/avd/Pixel_4a.avd/*.lock` and `/run/user/1000/avd/running/`.
 - Open work the user may re-point you at: on-device selection persistence after the picker
   closes (`[PICK]` debug logs were added; `autoDispose` of `fareSelectionProvider` is suspect).
+- Map data decision (see ROADMAP "Real map data"): geocode stops (nullable `lat`/`lng` on
+  `route_stops`, schema v3), static PNG route images, fares stay on `kmIndex`. Deferred — don't
+  pursue true OSM road-polylines.
 
 ## Commands (from repo root)
 

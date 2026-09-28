@@ -79,12 +79,51 @@ Open work:
       cancels in `abs`), but shifts the route diagram and implies mixed curation. Normalise to
       0 for consistency or document the mixed baselines.
 
+## Real map data (geocoded stops)
+
+Decision (Sep 2026): **geocode the stops, don't chase true road polylines yet.** Audio of
+available sources:
+
+> No ready-made geometry exists for the 69 named routes. OSM has real relations only for the
+> numbered Poblacion routes (1, 4, 5, 8, 10, 11, 12, 13); named routes exist only as ordered
+> street sequences on the OSM wiki (mapping "in progress", older PTv1 scheme, stops missing).
+> plexus-gtfs covers Metro Manila only; PARASOL covers Bacolod/GenSan/Iloilo only;
+> commute-davao.com draws *computed* shortest paths over the road graph, not the real lines.
+
+Locked decisions:
+
+- Fares stay on `kmIndex`; **coordinates are display-only**, so the fare model is untouched.
+- Rendering: **one static map image per route** (pre-rendered PNG) shown in route detail; the
+  schematic diagram remains the fallback when the image is missing or if offline.
+- Coordinates stored **nullable** on `route_stops` (schema v2 → v3 migration), filled from one
+  deduped geocoding pass (a few hundred unique stop names, not ~2000 rows).
+
+Steps (future implementation):
+
+- [ ] Migration: add nullable `lat` / `lng` columns to `route_stops`
+- [ ] Geocoding job (a `tool/` script like the manifest generator): dedupe stop names across the
+      69 files → Nominatim geocode → write coords back to every matching row; emit a
+      manual-review list for unmatchable names instead of failing the build
+- [ ] Static image generator: build-time script fetches OSM tiles, draws the route polyline
+      through the real stops, exports `assets/routes/{code}.png`; a test asserts every route
+      ships an image
+- [ ] Route detail: show `Image.asset` map PNG when present, else fall back to the schematic
+- [ ] Attribution screen: OSM + geocoder (ODbL); respect OSM tile-usage policy by bundling tiles
+      at build time, never hotlinking tiles at runtime
+
+Risks / notes:
+
+- Subdivision stop names ("Rosalina III", "Landmark III") geocode imperfectly → the manual-review
+  step in the geocoding job.
+- Straight segments between stops — the map corridor is approximate, no road-following.
+- Bonus tie-in: once stops have coords, "Landmarks and routes passing through X" becomes nearly
+  free.
+
 ## Later
 
 - [ ] Trip history — deliberately deferred; the user-facing history list is not needed yet
 - [ ] Favourited and recently used routes
 - [ ] Landmarks and "routes passing through X" search
-- [ ] Offline map or route-corridor visualisation
 - [ ] Real-time service advisories, which require a backend
 - [ ] Optional fare and route data sync from a remote source
 
