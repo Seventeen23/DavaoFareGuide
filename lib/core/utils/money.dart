@@ -18,6 +18,10 @@ class Money extends Equatable implements Comparable<Money> {
   Money operator -(Money other) => Money(centavos - other.centavos);
   Money operator *(int factor) => Money(centavos * factor);
 
+  // Some weird arithmetic to avoid floating point errors. This is a hacky solution but it works for now.
+  Money percentFrom(int percent) => Money((centavos * (100 - percent)) ~/ 100);
+  Money percentOff(int percent) => Money((centavos * percent / 100));
+
   @override
   int compareTo(Money other) => centavos.compareTo(other.centavos);
 
