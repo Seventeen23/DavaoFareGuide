@@ -18,10 +18,16 @@ The pipeline is therefore geocode, then *validate against geometry*:
      catches the bad geocodes, and it is the reason to never trust Nominatim
      here.
   5. For a stop that survives, record its distance along the one-way leg in
-     integer decimetres - that is the fare input.
+     integer decimetres - that is the fare input. Routes whose measured leg
+     disagrees with the curated `totalKm` by more than 3 km keep their
+     coordinates but get no distance at all (`source: disputed`); one of the
+     two lengths is describing a different route and nobody has said which.
   6. For a stop that fails, interpolate a display position from its kmIndex so
      the map is not full of gaps, and mark it interpolated. An interpolated
      stop never contributes a fare distance.
+
+`test/data/geo/geo_assets_test.dart` asserts the output of this script, so a
+change here that drops one of those guarantees fails the build.
 
 Regenerate with `python3 tool/place_stops.py`. Network access required for the
 first run; afterwards the cache makes it offline.
@@ -210,7 +216,7 @@ def main():
     print(f"  {geocoded} newly geocoded this run, {len(cache)} cached in total")
 
     result = {}
-    placed = interpolated = rejected = 0
+    placed = interpolated = rejected = barred = 0
     review = []
     blocked_routes = []
     review.append("| Route | Stop | kmIndex | Snap | Outcome |")
@@ -244,14 +250,26 @@ def main():
             distance = dist_dm = None
             display = None
             outcome = "unplaced"
+            source = "interpolated"
             if point is not None:
                 snap_km, along_km = snap(point, oneway, running)
                 if snap_km <= SNAP_LIMIT_KM:
                     distance = round(snap_km * 1000)
-                    dist_dm = int(round(along_km * 10))
                     display = point
-                    outcome = "placed"
                     placed += 1
+                    if disputed:
+                        # The position is real, but the leg it was measured
+                        # against is not the route this project describes, so
+                        # the distance along that leg is not published. The
+                        # stop keeps its coordinates and loses its distDm.
+                        dist_dm = None
+                        source = "disputed"
+                        outcome = "placed, route barred from fares"
+                        barred += 1
+                    else:
+                        dist_dm = int(round(along_km * 10))
+                        source = "geocoded"
+                        outcome = "placed"
                 else:
                     outcome = f"rejected ({snap_km * 1000:.0f} m off route)"
                     rejected += 1
@@ -273,8 +291,6 @@ def main():
                 index = min(len(oneway) - 1, max(0, int(fraction * (len(oneway) - 1))))
                 display = oneway[index]
                 interpolated += 1
-                if outcome == "placed":
-                    outcome = "placed"
 
             rows.append(
                 {
@@ -283,7 +299,7 @@ def main():
                     "lat": round(display[1], 6),
                     "lng": round(display[0], 6),
                     "distDm": dist_dm,
-                    "source": "geocoded" if dist_dm is not None else "interpolated",
+                    "source": source,
                 }
             )
 
@@ -301,6 +317,16 @@ def main():
             "kmIndex instead, which is a display position only. An interpolated\n"
             "stop has `distDm: null` and never contributes a fare distance - the\n"
             "trip falls back to the curated whole-kilometre kmIndex.\n\n"
+        )
+        if barred:
+            handle.write(
+                f"A further {barred} stops sit on a route that is barred from\n"
+                "publishing a distance (see the last section). They are marked\n"
+                "`source: disputed`: the coordinates are real, the `distDm` is not\n"
+                "published, and the fare falls back to kmIndex as it does for an\n"
+                "interpolated stop.\n\n"
+            )
+        handle.write(
             "These are the ones to check by hand. Most are subdivision gates,\n"
             "barangay halls and small junctions that OSM has never heard of; a few\n"
             "will be genuine mis-geocodes worth correcting.\n\n"
@@ -326,7 +352,8 @@ def main():
           f"{fareable} with a fare distance")
     print(f"wrote {REVIEW_MD}")
     if blocked_routes:
-        print(f"barred from fares: {', '.join(c for c, _ in blocked_routes)}")
+        print(f"barred from fares: {', '.join(c for c, _ in blocked_routes)} "
+              f"({barred} stops placed, no distance published)")
     return 0
 
 

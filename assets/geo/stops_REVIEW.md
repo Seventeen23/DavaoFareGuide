@@ -5,6 +5,12 @@ kmIndex instead, which is a display position only. An interpolated
 stop has `distDm: null` and never contributes a fare distance - the
 trip falls back to the curated whole-kilometre kmIndex.
 
+A further 17 stops sit on a route that is barred from
+publishing a distance (see the last section). They are marked
+`source: disputed`: the coordinates are real, the `distDm` is not
+published, and the fare falls back to kmIndex as it does for an
+interpolated stop.
+
 These are the ones to check by hand. Most are subdivision gates,
 barangay halls and small junctions that OSM has never heard of; a few
 will be genuine mis-geocodes worth correcting.

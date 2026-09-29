@@ -55,15 +55,23 @@ Offers the user feedback:
 Findings from an audit of all 69 route files (they are strictly monotonic: 0 duplicate km
 indices, 0 inversions, median length 14 km, 13 files do not start their file at km 0).
 
+- [x] **De-couple the fare engine from `kmIndex`.** `FareCalculator.calculate` is now pure on a
+      `TripDistance`; `calculateByKmIndex` is the explicit fallback for callers that have only the
+      published marks, and `resolveTripDistance` is the one place that decides which a trip gets.
+      A future distance strategy (fractional km, measured geometry) slots in without touching
+      pricing.
+
 Open work:
 
-- [ ] **Whole-km quantization is the biggest accuracy gap.** A trip of 4.9 km bills as 4 km
-      (₱14.00 instead of ≈₱15.80). The formula cannot be more precise than the data. Two
-      possible fixes:
+- [ ] **Whole-km quantization is still the biggest accuracy gap.** A trip of 4.9 km bills as 4 km
+      (₱14.00 instead of ≈₱15.80). The formula cannot be more precise than the fare basis, and the
+      fare basis is still the curated whole-km mark. Two possible fixes:
       - Re-curate route files with tenths of a km, **or**
-      - Store per-stop lat/lng and derive distance some other way. Note kmIndex is cumulative
-        *route* distance, which is closer to real jeepney fare computation than straight-line
-        distance, so coordinates are a larger effort for roughly the same result.
+      - Let the fare follow the measured road distance now available on `route_stops.distDm`.
+        This is a **product decision, not a data fix**: the published tariff is quoted per whole
+        kilometre, so switching would change what the app charges, and the measured length is
+        only good for 102 of 462 stops, with 4 routes barred outright. The measured value is
+        currently shown beside the fare as information.
 - [ ] **Latent rounding bug in `percentOff` / `percentFrom`.** On non-round centavo totals the
       two disagree (e.g. ₱0.07 total: `percentOff(20)` saves 1¢ → pay 6¢, `percentFrom(20)` →
       pay 5¢). Unreachable today because every fare is a multiple of ₱1.00, but a footgun.
@@ -71,10 +79,6 @@ Open work:
       truth).
 - [ ] **`abs()` assumes one-way out-and-back lines.** Correct for today's data, but a future
       loop/circuit route would need `min(|a − b|, totalKm − |a − b|)`.
-- [ ] **De-couple the fare engine from `kmIndex`.** `FareCalculator.calculate(startKm, endKm)`
-      hardcodes the storage notion of kmIndex. Cleaner: make the calculator pure on
-      `distanceKm` and move `|start − end|` into a route-level helper so a future distance
-      strategy (fractional km, coordinates) can slot in without touching pricing.
 - [ ] **Normalise the 13 route files that do not start at km 0.** Benign to fares (the baseline
       cancels in `abs`), but shifts the route diagram and implies mixed curation. Normalise to
       0 for consistency or document the mixed baselines.
@@ -90,6 +94,10 @@ available sources:
 > plexus-gtfs covers Metro Manila only; PARASOL covers Bacolod/GenSan/Iloilo only;
 > commute-davao.com draws *computed* shortest paths over the road graph, not the real lines.
 
+This later turned out to be half true: commute-davao.com does ship hand-drawn polylines for
+52 routes in its JS bundle, 31 of which match a bundled route. They are **unlicensed** — see
+`assets/geo/PROVENANCE.md`, which is a blocker for shipping, not a footnote.
+
 Locked decisions:
 
 - Fares stay on `kmIndex`; **coordinates are display-only**, so the fare model is untouched.
@@ -98,18 +106,43 @@ Locked decisions:
 - Coordinates stored **nullable** on `route_stops` (schema v2 → v3 migration), filled from one
   deduped geocoding pass (a few hundred unique stop names, not ~2000 rows).
 
-Steps (future implementation):
+Landed:
 
-- [ ] Migration: add nullable `lat` / `lng` columns to `route_stops`
-- [ ] Geocoding job (a `tool/` script like the manifest generator): dedupe stop names across the
-      69 files → Nominatim geocode → write coords back to every matching row; emit a
-      manual-review list for unmatchable names instead of failing the build
+- [x] Migration: nullable `lat` / `lng` / `distDm` on `route_stops` (schema v3), plus
+      `route_geometries`, `landmark_entries` and `route_landmarks`
+- [x] `tool/fetch_route_geometry.py` — imports the out-and-back polylines, splits each at its
+      turnaround, and records where the measurement contradicts the curated `totalKm`
+- [x] `tool/place_stops.py` — geocodes then **validates against geometry**: a stop is only
+      trusted within 250 m of its own route's polyline, which is what rejects the "Puting Bato
+      landed 20 km east" class of Nominatim answer. 102 of 462 stops get a distance in decimetres;
+      the rest are interpolated from `kmIndex` for display and publish nothing
+- [x] `tool/fetch_landmarks.py` — 98 landmarks (curated / Wikidata / OSM POIs in corridor)
+- [x] `TripDistance` + `resolveTripDistance` carry **provenance**: a trip is measured only when
+      *both* ends are placed, and the fare engine still prices from `kmIndex`; the measured
+      distance is shown beside the fare, never charged
+- [x] `assets/geo/unverified/` — the 15 numbered Poblacion routes are quarantined (no stops, no
+      `kmIndex`, no fare basis), not bundled, and asserted unbundled by
+      `test/data/geo/unverified_assets_test.dart`
+- [x] `test/data/geo/` — 31 tests over the generated data: placement rows must match the route
+      files, interpolated stops must publish no distance, disputed routes must publish none at
+      all, coordinates must stay inside Davao, quarantined data must never reach the database
+
+Still open:
+
+- [ ] **Licensing, before any release.** The 31 polylines have no licence. Either ask the author
+      for permission with credit, or rebuild the geometry from OSM highway ways.
 - [ ] Static image generator: build-time script fetches OSM tiles, draws the route polyline
       through the real stops, exports `assets/routes/{code}.png`; a test asserts every route
       ships an image
 - [ ] Route detail: show `Image.asset` map PNG when present, else fall back to the schematic
 - [ ] Attribution screen: OSM + geocoder (ODbL); respect OSM tile-usage policy by bundling tiles
       at build time, never hotlinking tiles at runtime
+- [ ] Hand-review the 343 interpolated stops in `assets/geo/stops_REVIEW.md`; a few will be
+      genuine mis-geocodes worth correcting
+- [ ] Decide the four disputed routes (`toril`, `ulas`, `tibungco_via_cabaguio_avenue`,
+      `ecoland_subdivision_sm_city_of_davao`): which length is authoritative, the site's or the
+      curated `totalKm`? Until then they publish no distance at all.
+- [ ] 24 landmarks are on no route, so they cannot be drawn; link them by proximity or drop them
 
 Risks / notes:
 
@@ -117,13 +150,14 @@ Risks / notes:
   step in the geocoding job.
 - Straight segments between stops — the map corridor is approximate, no road-following.
 - Bonus tie-in: once stops have coords, "Landmarks and routes passing through X" becomes nearly
-  free.
+  free. `assets/landmarks.json` is already bundled and seeded; only the UI is missing.
 
 ## Later
 
 - [ ] Trip history — deliberately deferred; the user-facing history list is not needed yet
 - [ ] Favourited and recently used routes
-- [ ] Landmarks and "routes passing through X" search
+- [ ] Landmarks and "routes passing through X" search — the data is already bundled and seeded
+      (98 landmarks, 74 of them linked to a route); only the search UI is missing
 - [ ] Real-time service advisories, which require a backend
 - [ ] Optional fare and route data sync from a remote source
 
@@ -135,4 +169,6 @@ Risks / notes:
   what real hardware produces, so profile on a physical device before drawing conclusions
   about UI performance.
 - Trip history directories exist but are unpopulated; the feature is not wired up.
+- The map data is display-only and unshipped-in-spirit: `assets/geo/PROVENANCE.md` records that
+  the source geometry has no licence, so a release built today would redistribute it.
 - The root disk sits at 96% capacity. Gradle and emulator work are both slowed by this.

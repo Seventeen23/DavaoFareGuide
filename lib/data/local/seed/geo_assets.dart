@@ -116,8 +116,13 @@ class StopPlacement {
   final double? lng;
   final int? distDm;
 
-  /// `geocoded` when the stop was snapped onto the polyline, `interpolated`
-  /// when its position was guessed from its kilometre mark for display only.
+  /// Where this position came from:
+  ///
+  ///  - `geocoded`: snapped onto the polyline, so [distDm] is a measurement.
+  ///  - `disputed`: snapped, but on a route whose measured leg contradicts the
+  ///    published kilometre marks, so no distance is published. See
+  ///    `assets/geo/PROVENANCE.md`.
+  ///  - `interpolated`: guessed from the kilometre mark, for display only.
   final String source;
 
   /// True when this position is a real measurement worth trusting.
