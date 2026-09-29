@@ -17,7 +17,7 @@ final routeRepositoryProvider = Provider<RouteRepository>((ref) {
 
 final routeListProvider = FutureProvider<List<JeepneyRoute>>((ref) async {
   final repository = ref.watch(routeRepositoryProvider);
-  await repository.seedIfEmpty();
+  await repository.seedIfStale();
   final Result<List<JeepneyRoute>> result = await repository.getAllRoutes();
   return result.fold((routes) => routes, (failure) => throw failure);
 });

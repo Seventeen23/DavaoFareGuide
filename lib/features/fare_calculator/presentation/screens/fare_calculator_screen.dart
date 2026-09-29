@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import '../../../../app/theme/app_theme.dart';
 import '../../../../core/utils/fare_calculator.dart';
 import '../../../../core/utils/money.dart';
+import '../../../../core/utils/trip_distance.dart';
 import '../../../../core/widgets/app_card.dart';
 import '../../../../core/widgets/app_empty_view.dart';
 import '../../../../data/models/jeepney_route.dart';
@@ -197,8 +198,8 @@ class _BookingBody extends ConsumerWidget {
   }
 
   FareEstimate get _emptyEstimate => FareEstimate(
-    regular: const FareBreakdown(
-      distanceKm: 0,
+    regular: FareBreakdown(
+      distance: TripDistance.precise(0),
       billableKm: 0,
       baseFare: Money.zero,
       distanceCharge: Money.zero,
@@ -206,8 +207,8 @@ class _BookingBody extends ConsumerWidget {
       total: Money.zero,
       category: PassengerCategory.regular,
     ),
-    discounted: const FareBreakdown(
-      distanceKm: 0,
+    discounted: FareBreakdown(
+      distance: TripDistance.precise(0),
       billableKm: 0,
       baseFare: Money.zero,
       distanceCharge: Money.zero,
@@ -236,7 +237,7 @@ class _RouteHeader extends StatelessWidget {
             children: [
               Text(route.displayName, style: textTheme.headlineSmall),
               const SizedBox(height: AppSpacing.xs),
-              Text(route.landmarks.join('  •  '), style: textTheme.bodySmall),
+              Text(route.viaLabels.join('  •  '), style: textTheme.bodySmall),
             ],
           ),
         ),

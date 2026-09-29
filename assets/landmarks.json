@@ -1,0 +1,1686 @@
+{
+ "schemaVersion": 1,
+ "generatedAt": "2026-09-29T03:51:00Z",
+ "corridorKm": 0.15,
+ "landmarks": [
+  {
+   "id": "wd-Q4647235",
+   "name": "A.L. Navarro National High School",
+   "lat": 7.2653676,
+   "lng": 125.6655685,
+   "source": "wikidata",
+   "category": "school",
+   "routes": []
+  },
+  {
+   "id": "lm-abrezaMall",
+   "name": "Abreeza Mall",
+   "lat": 7.092158253911314,
+   "lng": 125.61249302672061,
+   "source": "curated",
+   "category": "mall",
+   "routes": [
+    "buhangin_via_jp_laurel_avenue",
+    "bunawan_via_buhangin",
+    "bunawan_via_sasa",
+    "emily_homes",
+    "jade_valley",
+    "lasang_via_buhangin",
+    "lasang_via_sasa",
+    "panacan_sm_city_route",
+    "panacan_via_cabaguio_avenue",
+    "sasa_via_cabaguio_avenue",
+    "sasa_via_jp_laurel_avenue",
+    "sasa_via_r_castillo_street",
+    "tibungco_via_buhangin",
+    "tibungco_via_cabaguio_avenue",
+    "tibungco_via_r_castillo_avenue"
+   ]
+  },
+  {
+   "id": "lm-acaciaMandugTerminal",
+   "name": "Acacia Mandug Terminal",
+   "lat": 7.074234650695615,
+   "lng": 125.61238279617233,
+   "source": "curated",
+   "category": "terminal",
+   "routes": [
+    "bangkal",
+    "buhangin_via_jp_laurel_avenue",
+    "bunawan_via_buhangin",
+    "bunawan_via_sasa",
+    "calinan",
+    "ecoland_subdivision_sm_city_of_davao",
+    "emily_homes",
+    "jade_valley",
+    "lasang_via_buhangin",
+    "lasang_via_sasa",
+    "maa_agdao",
+    "matina",
+    "matina_aplaya",
+    "matina_crossing",
+    "mintal",
+    "panacan_via_cabaguio_avenue",
+    "sasa_via_cabaguio_avenue",
+    "sasa_via_jp_laurel_avenue",
+    "sasa_via_r_castillo_street",
+    "tibungco_via_buhangin",
+    "tibungco_via_cabaguio_avenue",
+    "tibungco_via_r_castillo_avenue",
+    "ulas"
+   ]
+  },
+  {
+   "id": "lm-agdaoFlyover",
+   "name": "Agdao Flyover",
+   "lat": 7.083557272764483,
+   "lng": 125.62457636904922,
+   "source": "curated",
+   "category": "landmark",
+   "routes": [
+    "buhangin_via_dacudao",
+    "bunawan_via_sasa",
+    "lasang_via_sasa",
+    "maa_agdao",
+    "matina",
+    "matina_aplaya",
+    "sasa_via_jp_laurel_avenue",
+    "sasa_via_r_castillo_street",
+    "tibungco_via_buhangin",
+    "tibungco_via_r_castillo_avenue"
+   ]
+  },
+  {
+   "id": "wd-Q28878079",
+   "name": "Andres Bonifacio historical marker",
+   "lat": 7.01882,
+   "lng": 125.49742,
+   "source": "wikidata",
+   "category": "landmark",
+   "routes": []
+  },
+  {
+   "id": "wd-Q48791603",
+   "name": "Apo View Hotel",
+   "lat": 7.069437074,
+   "lng": 125.607783832,
+   "source": "wikidata",
+   "category": "hotel",
+   "routes": [
+    "toril",
+    "ulas"
+   ]
+  },
+  {
+   "id": "lm-assumptionCollegeOfDavao",
+   "name": "Assumption College of Davao",
+   "lat": 7.087973636165698,
+   "lng": 125.62376880952834,
+   "source": "curated",
+   "category": "university",
+   "routes": [
+    "buhangin_via_dacudao",
+    "maa_agdao",
+    "panacan_via_cabaguio_avenue",
+    "sasa_via_cabaguio_avenue",
+    "tibungco_via_cabaguio_avenue"
+   ]
+  },
+  {
+   "id": "wd-Q4810352",
+   "name": "Assumption College of Davao",
+   "lat": 7.08813,
+   "lng": 125.62411,
+   "source": "wikidata",
+   "category": "university",
+   "routes": [
+    "buhangin_via_dacudao",
+    "maa_agdao",
+    "panacan_via_cabaguio_avenue",
+    "sasa_via_cabaguio_avenue",
+    "tibungco_via_cabaguio_avenue"
+   ]
+  },
+  {
+   "id": "wd-Q268749",
+   "name": "Ateneo de Davao University",
+   "lat": 7.07222222,
+   "lng": 125.61305556,
+   "source": "wikidata",
+   "category": "university",
+   "routes": [
+    "bago_aplaya",
+    "bangkal",
+    "buhangin_via_jp_laurel_avenue",
+    "bunawan_via_buhangin",
+    "bunawan_via_sasa",
+    "calinan",
+    "catalunan_grande",
+    "ecoland_subdivision_sm_city_of_davao",
+    "emily_homes",
+    "jade_valley",
+    "lasang_via_buhangin",
+    "lasang_via_sasa",
+    "maa_agdao",
+    "matina",
+    "matina_aplaya",
+    "mintal",
+    "panacan_via_cabaguio_avenue",
+    "sasa_via_cabaguio_avenue",
+    "sasa_via_r_castillo_street",
+    "talomo",
+    "tibungco_via_buhangin",
+    "tibungco_via_cabaguio_avenue",
+    "tibungco_via_r_castillo_avenue",
+    "toril"
+   ]
+  },
+  {
+   "id": "lm-adduRoxas",
+   "name": "Ateneo de Davao University - Roxas Avenue",
+   "lat": 7.07124624965583,
+   "lng": 125.61340631396786,
+   "source": "curated",
+   "category": "university",
+   "routes": [
+    "bago_aplaya",
+    "bunawan_via_buhangin",
+    "bunawan_via_sasa",
+    "calinan",
+    "lasang_via_buhangin",
+    "lasang_via_sasa",
+    "mintal",
+    "panacan_via_cabaguio_avenue",
+    "talomo",
+    "tibungco_via_buhangin",
+    "tibungco_via_cabaguio_avenue",
+    "tibungco_via_r_castillo_avenue",
+    "toril"
+   ]
+  },
+  {
+   "id": "lm-avidaTowers",
+   "name": "Avida Towers Davao",
+   "lat": 7.070114238160174,
+   "lng": 125.6113561556079,
+   "source": "curated",
+   "category": "landmark",
+   "routes": [
+    "bago_aplaya",
+    "bangkal",
+    "buhangin_via_jp_laurel_avenue",
+    "catalunan_grande",
+    "ecoland_subdivision_sm_city_of_davao",
+    "emily_homes",
+    "jade_valley",
+    "maa_agdao",
+    "matina",
+    "matina_aplaya",
+    "matina_crossing",
+    "sasa_via_cabaguio_avenue",
+    "sasa_via_jp_laurel_avenue",
+    "sasa_via_r_castillo_street",
+    "talomo",
+    "toril",
+    "ulas"
+   ]
+  },
+  {
+   "id": "lm-azuelaCove",
+   "name": "Azuela Cove",
+   "lat": 7.103295275327328,
+   "lng": 125.64470481150154,
+   "source": "curated",
+   "category": "waterfront",
+   "routes": [
+    "bunawan_via_sasa",
+    "lasang_via_sasa",
+    "panacan_sm_city_route",
+    "panacan_via_cabaguio_avenue",
+    "sasa_via_cabaguio_avenue",
+    "sasa_via_jp_laurel_avenue",
+    "sasa_via_r_castillo_street",
+    "tibungco_via_cabaguio_avenue",
+    "tibungco_via_r_castillo_avenue"
+   ]
+  },
+  {
+   "id": "lm-bankerohanPublicMarket",
+   "name": "Bankerohan Public Market",
+   "lat": 7.068627474743353,
+   "lng": 125.60110135049948,
+   "source": "curated",
+   "category": "market",
+   "routes": [
+    "buhangin_via_jp_laurel_avenue",
+    "jade_valley",
+    "maa_bankerohan"
+   ]
+  },
+  {
+   "id": "lm-boulevard",
+   "name": "Boulevard",
+   "lat": 7.064124664700003,
+   "lng": 125.61362988742951,
+   "source": "curated",
+   "category": "landmark",
+   "routes": [
+    "bago_aplaya",
+    "calinan",
+    "ecoland_subdivision_sm_city_of_davao",
+    "matina_crossing",
+    "matina_pangi",
+    "mintal",
+    "sasa_via_jp_laurel_avenue",
+    "sasa_via_r_castillo_street",
+    "talomo",
+    "toril"
+   ]
+  },
+  {
+   "id": "lm-buhanginGym",
+   "name": "Buhangin Gym",
+   "lat": 7.109123484680461,
+   "lng": 125.61572934175844,
+   "source": "curated",
+   "category": "landmark",
+   "routes": [
+    "buhangin_via_dacudao",
+    "buhangin_via_jp_laurel_avenue",
+    "bunawan_via_buhangin",
+    "lasang_via_buhangin",
+    "tibungco_via_buhangin"
+   ]
+  },
+  {
+   "id": "osm-node-8532773079",
+   "name": "Caltransco Terminal",
+   "lat": 7.0686841,
+   "lng": 125.6021441,
+   "source": "osm",
+   "category": "terminal",
+   "routes": [
+    "bago_aplaya",
+    "bangkal",
+    "buhangin_via_jp_laurel_avenue",
+    "calinan",
+    "catalunan_grande",
+    "ecoland_subdivision_sm_city_of_davao",
+    "jade_valley",
+    "maa_agdao",
+    "maa_bankerohan",
+    "matina",
+    "matina_aplaya",
+    "matina_crossing",
+    "matina_pangi",
+    "mintal",
+    "panacan_sm_city_route",
+    "talomo",
+    "toril",
+    "ulas"
+   ]
+  },
+  {
+   "id": "lm-carmeliteChurch",
+   "name": "Carmelite Church",
+   "lat": 7.100458061842574,
+   "lng": 125.6287053365147,
+   "source": "curated",
+   "category": "church",
+   "routes": [
+    "bunawan_via_sasa",
+    "lasang_via_sasa",
+    "panacan_sm_city_route",
+    "panacan_via_cabaguio_avenue",
+    "sasa_via_cabaguio_avenue",
+    "sasa_via_jp_laurel_avenue",
+    "sasa_via_r_castillo_street",
+    "tibungco_via_cabaguio_avenue",
+    "tibungco_via_r_castillo_avenue"
+   ]
+  },
+  {
+   "id": "osm-node-12703868348",
+   "name": "Citi Star",
+   "lat": 7.2373814,
+   "lng": 125.6423362,
+   "source": "osm",
+   "category": "mall",
+   "routes": [
+    "lasang_via_buhangin",
+    "lasang_via_sasa"
+   ]
+  },
+  {
+   "id": "osm-node-12229896193",
+   "name": "Clinica Isaguirre",
+   "lat": 7.1922225,
+   "lng": 125.4553396,
+   "source": "osm",
+   "category": "hospital",
+   "routes": [
+    "calinan"
+   ]
+  },
+  {
+   "id": "wd-Q105523511",
+   "name": "Consulate-General of Japan, Davao",
+   "lat": 7.088,
+   "lng": 125.61,
+   "source": "wikidata",
+   "category": "civic",
+   "routes": [
+    "buhangin_via_jp_laurel_avenue",
+    "bunawan_via_buhangin",
+    "bunawan_via_sasa",
+    "emily_homes",
+    "jade_valley",
+    "lasang_via_buhangin",
+    "lasang_via_sasa",
+    "panacan_sm_city_route",
+    "panacan_via_cabaguio_avenue",
+    "sasa_via_cabaguio_avenue",
+    "sasa_via_jp_laurel_avenue",
+    "sasa_via_r_castillo_street",
+    "tibungco_via_buhangin",
+    "tibungco_via_cabaguio_avenue",
+    "tibungco_via_r_castillo_avenue"
+   ]
+  },
+  {
+   "id": "wd-Q116031463",
+   "name": "Consulate-General of the People's Republic of China in Davao",
+   "lat": 7.0560925,
+   "lng": 125.5980336,
+   "source": "wikidata",
+   "category": "civic",
+   "routes": []
+  },
+  {
+   "id": "lm-damosaGateway",
+   "name": "Damosa Gateway",
+   "lat": 7.102082776800946,
+   "lng": 125.63276405555644,
+   "source": "curated",
+   "category": "landmark",
+   "routes": [
+    "bunawan_via_sasa",
+    "lasang_via_sasa",
+    "panacan_sm_city_route",
+    "panacan_via_cabaguio_avenue",
+    "sasa_via_cabaguio_avenue",
+    "sasa_via_jp_laurel_avenue",
+    "sasa_via_r_castillo_street",
+    "tibungco_via_cabaguio_avenue",
+    "tibungco_via_r_castillo_avenue"
+   ]
+  },
+  {
+   "id": "wd-Q17151013",
+   "name": "Daniel R. Aguinaldo High School",
+   "lat": 7.05611111,
+   "lng": 125.5688889,
+   "source": "wikidata",
+   "category": "school",
+   "routes": []
+  },
+  {
+   "id": "wd-Q5228142",
+   "name": "Davao Chong Hua High School",
+   "lat": 7.07701,
+   "lng": 125.61375,
+   "source": "wikidata",
+   "category": "school",
+   "routes": [
+    "buhangin_via_jp_laurel_avenue",
+    "bunawan_via_buhangin",
+    "bunawan_via_sasa",
+    "emily_homes",
+    "jade_valley",
+    "lasang_via_buhangin",
+    "lasang_via_sasa",
+    "matina_pangi",
+    "panacan_sm_city_route",
+    "panacan_via_cabaguio_avenue",
+    "sasa_via_cabaguio_avenue",
+    "sasa_via_jp_laurel_avenue",
+    "sasa_via_r_castillo_street",
+    "tibungco_via_buhangin",
+    "tibungco_via_cabaguio_avenue",
+    "tibungco_via_r_castillo_avenue",
+    "ulas"
+   ]
+  },
+  {
+   "id": "wd-Q5228146",
+   "name": "Davao Christian High School",
+   "lat": 7.07972222,
+   "lng": 125.61055556,
+   "source": "wikidata",
+   "category": "school",
+   "routes": []
+  },
+  {
+   "id": "lm-postOffice",
+   "name": "Davao City Central Post Office",
+   "lat": 7.073391894382858,
+   "lng": 125.61148149508654,
+   "source": "curated",
+   "category": "office",
+   "routes": [
+    "bago_aplaya",
+    "bangkal",
+    "buhangin_via_jp_laurel_avenue",
+    "bunawan_via_buhangin",
+    "bunawan_via_sasa",
+    "calinan",
+    "catalunan_grande",
+    "ecoland_subdivision_sm_city_of_davao",
+    "emily_homes",
+    "jade_valley",
+    "lasang_via_buhangin",
+    "lasang_via_sasa",
+    "maa_agdao",
+    "matina",
+    "matina_aplaya",
+    "matina_crossing",
+    "mintal",
+    "panacan_via_cabaguio_avenue",
+    "sasa_via_cabaguio_avenue",
+    "sasa_via_jp_laurel_avenue",
+    "sasa_via_r_castillo_street",
+    "tibungco_via_buhangin",
+    "tibungco_via_cabaguio_avenue",
+    "tibungco_via_r_castillo_avenue",
+    "ulas"
+   ]
+  },
+  {
+   "id": "wd-Q28937451",
+   "name": "Davao City Hall",
+   "lat": 7.06439,
+   "lng": 125.6077,
+   "source": "wikidata",
+   "category": "civic",
+   "routes": [
+    "bago_aplaya",
+    "buhangin_via_jp_laurel_avenue",
+    "ecoland_subdivision_sm_city_of_davao",
+    "jade_valley",
+    "maa_agdao",
+    "matina",
+    "matina_aplaya",
+    "matina_crossing",
+    "matina_pangi",
+    "sasa_via_cabaguio_avenue",
+    "sasa_via_jp_laurel_avenue",
+    "talomo"
+   ]
+  },
+  {
+   "id": "wd-Q28937459",
+   "name": "Davao City Hall historical marker",
+   "lat": 7.0646158,
+   "lng": 125.6079313,
+   "source": "wikidata",
+   "category": "landmark",
+   "routes": [
+    "bago_aplaya",
+    "buhangin_via_jp_laurel_avenue",
+    "ecoland_subdivision_sm_city_of_davao",
+    "jade_valley",
+    "maa_agdao",
+    "matina",
+    "matina_aplaya",
+    "matina_crossing",
+    "matina_pangi",
+    "sasa_via_cabaguio_avenue",
+    "sasa_via_jp_laurel_avenue",
+    "talomo"
+   ]
+  },
+  {
+   "id": "wd-Q17068264",
+   "name": "Davao City National High School",
+   "lat": 7.07915,
+   "lng": 125.60638,
+   "source": "wikidata",
+   "category": "school",
+   "routes": []
+  },
+  {
+   "id": "lm-davaoCityWaterDistrict",
+   "name": "Davao City Water District",
+   "lat": 7.099222284883905,
+   "lng": 125.62469193836428,
+   "source": "curated",
+   "category": "office",
+   "routes": [
+    "bunawan_via_sasa",
+    "lasang_via_sasa",
+    "panacan_sm_city_route",
+    "panacan_via_cabaguio_avenue",
+    "sasa_via_cabaguio_avenue",
+    "sasa_via_jp_laurel_avenue",
+    "sasa_via_r_castillo_street",
+    "tibungco_via_cabaguio_avenue",
+    "tibungco_via_r_castillo_avenue"
+   ]
+  },
+  {
+   "id": "lm-davaoDoctorsHospital",
+   "name": "Davao Doctors Hospital",
+   "lat": 7.0703815325123305,
+   "lng": 125.60433988439193,
+   "source": "curated",
+   "category": "hospital",
+   "routes": [
+    "buhangin_via_jp_laurel_avenue",
+    "calinan",
+    "jade_valley",
+    "matina_pangi",
+    "mintal",
+    "panacan_sm_city_route",
+    "toril",
+    "ulas"
+   ]
+  },
+  {
+   "id": "wd-Q5228150",
+   "name": "Davao Doctors Hospital",
+   "lat": 7.07029,
+   "lng": 125.60443,
+   "source": "wikidata",
+   "category": "hospital",
+   "routes": [
+    "buhangin_via_jp_laurel_avenue",
+    "calinan",
+    "jade_valley",
+    "matina_pangi",
+    "mintal",
+    "panacan_sm_city_route",
+    "toril",
+    "ulas"
+   ]
+  },
+  {
+   "id": "osm-node-12249365099",
+   "name": "Davao Metro Shuttle",
+   "lat": 7.0687915,
+   "lng": 125.6030206,
+   "source": "osm",
+   "category": "terminal",
+   "routes": [
+    "bago_aplaya",
+    "bangkal",
+    "buhangin_via_jp_laurel_avenue",
+    "calinan",
+    "catalunan_grande",
+    "ecoland_subdivision_sm_city_of_davao",
+    "jade_valley",
+    "maa_agdao",
+    "maa_bankerohan",
+    "matina",
+    "matina_aplaya",
+    "matina_crossing",
+    "matina_pangi",
+    "mintal",
+    "panacan_sm_city_route",
+    "talomo",
+    "toril",
+    "ulas"
+   ]
+  },
+  {
+   "id": "wd-Q105043906",
+   "name": "Davao Philippines Temple",
+   "lat": 7.0884,
+   "lng": 125.5789,
+   "source": "wikidata",
+   "category": "church",
+   "routes": []
+  },
+  {
+   "id": "lm-davaoSamalFerryTerminal",
+   "name": "Davao-Samal Ferry Terminal",
+   "lat": 7.146396608688625,
+   "lng": 125.66332647701401,
+   "source": "curated",
+   "category": "waterfront",
+   "routes": []
+  },
+  {
+   "id": "wd-Q5383798",
+   "name": "Epol Falls",
+   "lat": 7.45361,
+   "lng": 125.238,
+   "source": "wikidata",
+   "category": "attraction",
+   "routes": []
+  },
+  {
+   "id": "osm-node-1248291960",
+   "name": "Felcris Anda",
+   "lat": 7.0654336,
+   "lng": 125.6065377,
+   "source": "osm",
+   "category": "mall",
+   "routes": [
+    "bago_aplaya",
+    "buhangin_via_jp_laurel_avenue",
+    "catalunan_grande",
+    "ecoland_subdivision_sm_city_of_davao",
+    "jade_valley",
+    "maa_agdao",
+    "matina",
+    "matina_aplaya",
+    "matina_crossing",
+    "matina_pangi",
+    "sasa_via_cabaguio_avenue",
+    "sasa_via_jp_laurel_avenue",
+    "talomo"
+   ]
+  },
+  {
+   "id": "wd-Q1192811",
+   "name": "Francisco Bangoy International Airport",
+   "lat": 7.125522,
+   "lng": 125.645778,
+   "source": "wikidata",
+   "category": "terminal",
+   "routes": []
+  },
+  {
+   "id": "osm-node-13067362443",
+   "name": "Gaisano Grand",
+   "lat": 7.0692725,
+   "lng": 125.6064353,
+   "source": "osm",
+   "category": "mall",
+   "routes": [
+    "toril",
+    "ulas"
+   ]
+  },
+  {
+   "id": "lm-gmall",
+   "name": "Gaisano Mall of Davao",
+   "lat": 7.0781691696292395,
+   "lng": 125.61373832623919,
+   "source": "curated",
+   "category": "mall",
+   "routes": [
+    "buhangin_via_jp_laurel_avenue",
+    "bunawan_via_buhangin",
+    "bunawan_via_sasa",
+    "emily_homes",
+    "jade_valley",
+    "lasang_via_buhangin",
+    "lasang_via_sasa",
+    "panacan_sm_city_route",
+    "panacan_via_cabaguio_avenue",
+    "sasa_via_cabaguio_avenue",
+    "sasa_via_jp_laurel_avenue",
+    "sasa_via_r_castillo_street",
+    "tibungco_via_buhangin",
+    "tibungco_via_cabaguio_avenue",
+    "tibungco_via_r_castillo_avenue"
+   ]
+  },
+  {
+   "id": "wd-Q17070830",
+   "name": "Gaisano Mall of Davao",
+   "lat": 7.07782,
+   "lng": 125.61413,
+   "source": "wikidata",
+   "category": "mall",
+   "routes": [
+    "buhangin_via_jp_laurel_avenue",
+    "bunawan_via_buhangin",
+    "bunawan_via_sasa",
+    "emily_homes",
+    "jade_valley",
+    "lasang_via_buhangin",
+    "lasang_via_sasa",
+    "matina_pangi",
+    "panacan_sm_city_route",
+    "panacan_via_cabaguio_avenue",
+    "sasa_via_cabaguio_avenue",
+    "sasa_via_jp_laurel_avenue",
+    "sasa_via_r_castillo_street",
+    "tibungco_via_buhangin",
+    "tibungco_via_cabaguio_avenue",
+    "tibungco_via_r_castillo_avenue",
+    "ulas"
+   ]
+  },
+  {
+   "id": "lm-grandRegal",
+   "name": "Grand Regal Hotel",
+   "lat": 7.10375063667412,
+   "lng": 125.64096805580667,
+   "source": "curated",
+   "category": "landmark",
+   "routes": [
+    "bunawan_via_sasa",
+    "lasang_via_sasa",
+    "panacan_sm_city_route",
+    "panacan_via_cabaguio_avenue",
+    "sasa_via_cabaguio_avenue",
+    "sasa_via_jp_laurel_avenue",
+    "sasa_via_r_castillo_street",
+    "tibungco_via_cabaguio_avenue",
+    "tibungco_via_r_castillo_avenue"
+   ]
+  },
+  {
+   "id": "osm-node-12969568642",
+   "name": "GSSD Cooperative Van Terminal",
+   "lat": 7.0509221,
+   "lng": 125.5871796,
+   "source": "osm",
+   "category": "terminal",
+   "routes": [
+    "bago_aplaya",
+    "bangkal",
+    "calinan",
+    "catalunan_grande",
+    "mintal",
+    "panacan_sm_city_route",
+    "toril"
+   ]
+  },
+  {
+   "id": "wd-Q55613869",
+   "name": "Holy Cross College of Calinan",
+   "lat": 7.18747222,
+   "lng": 125.45716667,
+   "source": "wikidata",
+   "category": "school",
+   "routes": [
+    "calinan"
+   ]
+  },
+  {
+   "id": "wd-Q5885197",
+   "name": "Holy Cross College of Sasa",
+   "lat": 7.1169,
+   "lng": 125.65011,
+   "source": "wikidata",
+   "category": "university",
+   "routes": []
+  },
+  {
+   "id": "wd-Q5885359",
+   "name": "Holy Cross of Davao College",
+   "lat": 7.07748,
+   "lng": 125.61639,
+   "source": "wikidata",
+   "category": "university",
+   "routes": [
+    "bunawan_via_buhangin",
+    "lasang_via_buhangin",
+    "maa_agdao",
+    "matina_pangi",
+    "ulas"
+   ]
+  },
+  {
+   "id": "lm-insularVillage",
+   "name": "Insular Village",
+   "lat": 7.1078625709906795,
+   "lng": 125.64634407616687,
+   "source": "curated",
+   "category": "landmark",
+   "routes": [
+    "bunawan_via_sasa",
+    "lasang_via_sasa",
+    "panacan_sm_city_route",
+    "panacan_via_cabaguio_avenue",
+    "sasa_via_cabaguio_avenue",
+    "sasa_via_jp_laurel_avenue",
+    "sasa_via_r_castillo_street",
+    "tibungco_via_cabaguio_avenue",
+    "tibungco_via_r_castillo_avenue"
+   ]
+  },
+  {
+   "id": "osm-node-4529345389",
+   "name": "Island Express",
+   "lat": 7.0782114,
+   "lng": 125.6228035,
+   "source": "osm",
+   "category": "terminal",
+   "routes": [
+    "buhangin_via_dacudao",
+    "matina",
+    "matina_aplaya",
+    "tibungco_via_buhangin",
+    "ulas"
+   ]
+  },
+  {
+   "id": "osm-node-11937803477",
+   "name": "Kalbaryo",
+   "lat": 7.1912582,
+   "lng": 125.6478143,
+   "source": "osm",
+   "category": "attraction",
+   "routes": [
+    "bunawan_via_buhangin",
+    "bunawan_via_sasa",
+    "lasang_via_buhangin",
+    "lasang_via_sasa"
+   ]
+  },
+  {
+   "id": "osm-node-12291264755",
+   "name": "KSC",
+   "lat": 7.1898047,
+   "lng": 125.4549282,
+   "source": "osm",
+   "category": "mall",
+   "routes": [
+    "calinan"
+   ]
+  },
+  {
+   "id": "lm-ladislawa",
+   "name": "Ladislawa",
+   "lat": 7.098909257775168,
+   "lng": 125.61260456547791,
+   "source": "curated",
+   "category": "landmark",
+   "routes": []
+  },
+  {
+   "id": "wd-Q6669621",
+   "name": "Lon Wa Buddhist Temple",
+   "lat": 7.09547,
+   "lng": 125.6207,
+   "source": "wikidata",
+   "category": "church",
+   "routes": [
+    "panacan_via_cabaguio_avenue",
+    "sasa_via_cabaguio_avenue",
+    "tibungco_via_cabaguio_avenue"
+   ]
+  },
+  {
+   "id": "osm-node-13518991701",
+   "name": "Lots for Less",
+   "lat": 7.0920329,
+   "lng": 125.5024977,
+   "source": "osm",
+   "category": "mall",
+   "routes": [
+    "calinan",
+    "mintal"
+   ]
+  },
+  {
+   "id": "osm-node-4787310107",
+   "name": "Mandug Terminal",
+   "lat": 7.0742351,
+   "lng": 125.6123272,
+   "source": "osm",
+   "category": "terminal",
+   "routes": [
+    "bago_aplaya",
+    "bangkal",
+    "buhangin_via_jp_laurel_avenue",
+    "bunawan_via_buhangin",
+    "bunawan_via_sasa",
+    "calinan",
+    "catalunan_grande",
+    "ecoland_subdivision_sm_city_of_davao",
+    "emily_homes",
+    "jade_valley",
+    "lasang_via_buhangin",
+    "lasang_via_sasa",
+    "maa_agdao",
+    "matina",
+    "matina_aplaya",
+    "matina_crossing",
+    "mintal",
+    "panacan_via_cabaguio_avenue",
+    "sasa_via_cabaguio_avenue",
+    "sasa_via_jp_laurel_avenue",
+    "sasa_via_r_castillo_street",
+    "tibungco_via_buhangin",
+    "tibungco_via_cabaguio_avenue",
+    "tibungco_via_r_castillo_avenue",
+    "ulas"
+   ]
+  },
+  {
+   "id": "lm-metroDavaoMedicalResearchCenter",
+   "name": "Metro Davao Medical Research Center",
+   "lat": 7.095233979818809,
+   "lng": 125.61329841137807,
+   "source": "curated",
+   "category": "landmark",
+   "routes": [
+    "buhangin_via_jp_laurel_avenue",
+    "bunawan_via_buhangin",
+    "bunawan_via_sasa",
+    "emily_homes",
+    "jade_valley",
+    "lasang_via_buhangin",
+    "lasang_via_sasa",
+    "panacan_sm_city_route",
+    "panacan_via_cabaguio_avenue",
+    "sasa_via_cabaguio_avenue",
+    "sasa_via_jp_laurel_avenue",
+    "sasa_via_r_castillo_street",
+    "tibungco_via_buhangin",
+    "tibungco_via_cabaguio_avenue",
+    "tibungco_via_r_castillo_avenue"
+   ]
+  },
+  {
+   "id": "osm-node-410146547",
+   "name": "Metro Mercado",
+   "lat": 7.0676053,
+   "lng": 125.6025411,
+   "source": "osm",
+   "category": "market",
+   "routes": [
+    "bago_aplaya",
+    "bangkal",
+    "buhangin_via_jp_laurel_avenue",
+    "calinan",
+    "catalunan_grande",
+    "ecoland_subdivision_sm_city_of_davao",
+    "jade_valley",
+    "maa_agdao",
+    "maa_bankerohan",
+    "matina",
+    "matina_aplaya",
+    "matina_crossing",
+    "matina_pangi",
+    "mintal",
+    "panacan_sm_city_route",
+    "talomo",
+    "toril",
+    "ulas"
+   ]
+  },
+  {
+   "id": "lm-milan",
+   "name": "Milan",
+   "lat": 7.109090201522036,
+   "lng": 125.61323795094404,
+   "source": "curated",
+   "category": "landmark",
+   "routes": [
+    "buhangin_via_dacudao",
+    "buhangin_via_jp_laurel_avenue",
+    "bunawan_via_buhangin",
+    "emily_homes",
+    "jade_valley",
+    "lasang_via_buhangin",
+    "tibungco_via_buhangin"
+   ]
+  },
+  {
+   "id": "osm-node-13713520996",
+   "name": "National University Davao, SM Extension",
+   "lat": 7.0495889,
+   "lng": 125.5867014,
+   "source": "osm",
+   "category": "university",
+   "routes": [
+    "bago_aplaya",
+    "bangkal",
+    "calinan",
+    "catalunan_grande",
+    "ecoland_subdivision_sm_city_of_davao",
+    "mintal",
+    "panacan_sm_city_route",
+    "toril"
+   ]
+  },
+  {
+   "id": "lm-ncccVP",
+   "name": "NCCC Mall VP",
+   "lat": 7.0873641292376925,
+   "lng": 125.6120662996561,
+   "source": "curated",
+   "category": "mall",
+   "routes": []
+  },
+  {
+   "id": "osm-node-5500538122",
+   "name": "New Day Recovery Center (Babista)",
+   "lat": 7.107036,
+   "lng": 125.6469846,
+   "source": "osm",
+   "category": "hospital",
+   "routes": [
+    "bunawan_via_sasa",
+    "lasang_via_sasa",
+    "panacan_sm_city_route",
+    "panacan_via_cabaguio_avenue",
+    "sasa_via_cabaguio_avenue",
+    "sasa_via_jp_laurel_avenue",
+    "sasa_via_r_castillo_street",
+    "tibungco_via_cabaguio_avenue",
+    "tibungco_via_r_castillo_avenue"
+   ]
+  },
+  {
+   "id": "lm-nhaBuhangin",
+   "name": "NHA Buhangin",
+   "lat": 7.114866134211908,
+   "lng": 125.62332142084438,
+   "source": "curated",
+   "category": "landmark",
+   "routes": [
+    "buhangin_via_dacudao",
+    "buhangin_via_jp_laurel_avenue",
+    "bunawan_via_buhangin",
+    "lasang_via_buhangin",
+    "tibungco_via_buhangin"
+   ]
+  },
+  {
+   "id": "lm-novaTierra",
+   "name": "Nova Tierra Village",
+   "lat": 7.110165262008923,
+   "lng": 125.64875987587948,
+   "source": "curated",
+   "category": "landmark",
+   "routes": [
+    "bunawan_via_sasa",
+    "lasang_via_sasa",
+    "panacan_sm_city_route",
+    "panacan_via_cabaguio_avenue",
+    "sasa_via_cabaguio_avenue",
+    "sasa_via_jp_laurel_avenue",
+    "sasa_via_r_castillo_street",
+    "tibungco_via_cabaguio_avenue",
+    "tibungco_via_r_castillo_avenue"
+   ]
+  },
+  {
+   "id": "osm-node-13236281068",
+   "name": "Novo",
+   "lat": 7.0820695,
+   "lng": 125.6228117,
+   "source": "osm",
+   "category": "mall",
+   "routes": [
+    "buhangin_via_dacudao",
+    "maa_agdao",
+    "matina",
+    "matina_aplaya",
+    "tibungco_via_buhangin"
+   ]
+  },
+  {
+   "id": "wd-Q28919992",
+   "name": "Ohta Kyozaburo historical marker",
+   "lat": 7.093968,
+   "lng": 125.500258,
+   "source": "wikidata",
+   "category": "landmark",
+   "routes": [
+    "calinan",
+    "mintal"
+   ]
+  },
+  {
+   "id": "lm-oldAirportRoad",
+   "name": "Old Airport Road",
+   "lat": 7.123695960914964,
+   "lng": 125.6538780867011,
+   "source": "curated",
+   "category": "landmark",
+   "routes": []
+  },
+  {
+   "id": "osm-node-9900715221",
+   "name": "Organic Farmer's Market",
+   "lat": 7.0644744,
+   "lng": 125.6083862,
+   "source": "osm",
+   "category": "market",
+   "routes": [
+    "bago_aplaya",
+    "buhangin_via_jp_laurel_avenue",
+    "ecoland_subdivision_sm_city_of_davao",
+    "jade_valley",
+    "maa_agdao",
+    "matina",
+    "matina_aplaya",
+    "matina_crossing",
+    "matina_pangi",
+    "sasa_via_cabaguio_avenue",
+    "sasa_via_jp_laurel_avenue",
+    "talomo"
+   ]
+  },
+  {
+   "id": "lm-philippineStatisticsOffice",
+   "name": "Philippine Statistics Office",
+   "lat": 7.094221879581217,
+   "lng": 125.62115773901363,
+   "source": "curated",
+   "category": "office",
+   "routes": [
+    "panacan_via_cabaguio_avenue",
+    "sasa_via_cabaguio_avenue",
+    "tibungco_via_cabaguio_avenue"
+   ]
+  },
+  {
+   "id": "lm-pobla",
+   "name": "Poblacion Market Central",
+   "lat": 7.074567375566981,
+   "lng": 125.61113652380831,
+   "source": "curated",
+   "category": "market",
+   "routes": [
+    "bago_aplaya",
+    "bangkal",
+    "buhangin_via_jp_laurel_avenue",
+    "calinan",
+    "catalunan_grande",
+    "emily_homes",
+    "jade_valley",
+    "maa_agdao",
+    "matina",
+    "matina_aplaya",
+    "matina_crossing",
+    "matina_pangi",
+    "mintal",
+    "panacan_sm_city_route",
+    "sasa_via_cabaguio_avenue",
+    "sasa_via_jp_laurel_avenue",
+    "ulas"
+   ]
+  },
+  {
+   "id": "lm-ponciano",
+   "name": "Ponciano Street",
+   "lat": 7.070716356781722,
+   "lng": 125.61013696365882,
+   "source": "curated",
+   "category": "landmark",
+   "routes": [
+    "bago_aplaya",
+    "bangkal",
+    "catalunan_grande",
+    "emily_homes",
+    "maa_agdao",
+    "matina",
+    "matina_aplaya",
+    "matina_crossing",
+    "sasa_via_cabaguio_avenue",
+    "sasa_via_jp_laurel_avenue",
+    "ulas"
+   ]
+  },
+  {
+   "id": "wd-Q28937532",
+   "name": "Port Sta. Ana historical marker",
+   "lat": 7.07532,
+   "lng": 125.6255,
+   "source": "wikidata",
+   "category": "landmark",
+   "routes": [
+    "bangkal",
+    "buhangin_via_dacudao",
+    "bunawan_via_sasa",
+    "lasang_via_sasa",
+    "maa_agdao",
+    "matina_aplaya",
+    "matina_crossing",
+    "panacan_via_cabaguio_avenue",
+    "sasa_via_cabaguio_avenue",
+    "sasa_via_jp_laurel_avenue",
+    "sasa_via_r_castillo_street",
+    "tibungco_via_buhangin",
+    "tibungco_via_cabaguio_avenue",
+    "tibungco_via_r_castillo_avenue",
+    "ulas"
+   ]
+  },
+  {
+   "id": "wd-Q58768734",
+   "name": "Precious International School of Davao",
+   "lat": 7.057924,
+   "lng": 125.578159,
+   "source": "wikidata",
+   "category": "school",
+   "routes": [
+    "bago_aplaya",
+    "bangkal",
+    "calinan",
+    "catalunan_grande",
+    "matina",
+    "matina_aplaya",
+    "matina_crossing",
+    "matina_pangi",
+    "mintal",
+    "talomo",
+    "toril",
+    "ulas"
+   ]
+  },
+  {
+   "id": "lm-ramonMagsaysayPark",
+   "name": "Ramon Magsaysay Park",
+   "lat": 7.074522705973319,
+   "lng": 125.62560809603544,
+   "source": "curated",
+   "category": "landmark",
+   "routes": [
+    "bangkal",
+    "buhangin_via_dacudao",
+    "bunawan_via_sasa",
+    "ecoland_subdivision_sm_city_of_davao",
+    "lasang_via_sasa",
+    "maa_agdao",
+    "matina_aplaya",
+    "matina_crossing",
+    "matina_pangi",
+    "panacan_via_cabaguio_avenue",
+    "sasa_via_cabaguio_avenue",
+    "sasa_via_jp_laurel_avenue",
+    "sasa_via_r_castillo_street",
+    "tibungco_via_buhangin",
+    "tibungco_via_cabaguio_avenue",
+    "tibungco_via_r_castillo_avenue",
+    "ulas"
+   ]
+  },
+  {
+   "id": "wd-Q7339082",
+   "name": "Rizal Special Education Learning Center",
+   "lat": 7.07356,
+   "lng": 125.60624,
+   "source": "wikidata",
+   "category": "university",
+   "routes": []
+  },
+  {
+   "id": "lm-roxasBoulevardIntersection",
+   "name": "Roxas Boulevard Intersection",
+   "lat": 7.066645776235931,
+   "lng": 125.61664028303687,
+   "source": "curated",
+   "category": "landmark",
+   "routes": [
+    "bago_aplaya",
+    "bunawan_via_sasa",
+    "calinan",
+    "ecoland_subdivision_sm_city_of_davao",
+    "lasang_via_sasa",
+    "matina_crossing",
+    "matina_pangi",
+    "mintal",
+    "panacan_via_cabaguio_avenue",
+    "sasa_via_jp_laurel_avenue",
+    "sasa_via_r_castillo_street",
+    "talomo",
+    "tibungco_via_buhangin",
+    "tibungco_via_cabaguio_avenue",
+    "tibungco_via_r_castillo_avenue",
+    "toril"
+   ]
+  },
+  {
+   "id": "lm-samalFerryWharf",
+   "name": "Samal Ferry Wharf",
+   "lat": 7.131791168616989,
+   "lng": 125.66300931979562,
+   "source": "curated",
+   "category": "waterfront",
+   "routes": [
+    "bunawan_via_sasa",
+    "lasang_via_sasa",
+    "panacan_sm_city_route",
+    "panacan_via_cabaguio_avenue",
+    "sasa_via_cabaguio_avenue",
+    "sasa_via_jp_laurel_avenue",
+    "sasa_via_r_castillo_street",
+    "tibungco_via_cabaguio_avenue",
+    "tibungco_via_r_castillo_avenue"
+   ]
+  },
+  {
+   "id": "wd-Q25110115",
+   "name": "San Lorenzo College of Davao",
+   "lat": 7.05221,
+   "lng": 125.54537,
+   "source": "wikidata",
+   "category": "school",
+   "routes": []
+  },
+  {
+   "id": "lm-sanPedroCathedral",
+   "name": "San Pedro Cathedral",
+   "lat": 7.065125993009238,
+   "lng": 125.60917364969276,
+   "source": "curated",
+   "category": "church",
+   "routes": [
+    "bago_aplaya",
+    "bangkal",
+    "buhangin_via_jp_laurel_avenue",
+    "catalunan_grande",
+    "ecoland_subdivision_sm_city_of_davao",
+    "emily_homes",
+    "jade_valley",
+    "maa_agdao",
+    "matina",
+    "matina_aplaya",
+    "matina_crossing",
+    "matina_pangi",
+    "sasa_via_cabaguio_avenue",
+    "sasa_via_jp_laurel_avenue",
+    "talomo"
+   ]
+  },
+  {
+   "id": "wd-Q7415103",
+   "name": "San Pedro College",
+   "lat": 7.078,
+   "lng": 125.6157,
+   "source": "wikidata",
+   "category": "university",
+   "routes": [
+    "bunawan_via_buhangin",
+    "lasang_via_buhangin",
+    "matina_pangi",
+    "ulas"
+   ]
+  },
+  {
+   "id": "lm-sangguniangPanlungsod",
+   "name": "Sangguniang Panlungsod",
+   "lat": 7.064383929323648,
+   "lng": 125.60906840626393,
+   "source": "curated",
+   "category": "civic",
+   "routes": [
+    "bago_aplaya",
+    "bangkal",
+    "buhangin_via_jp_laurel_avenue",
+    "catalunan_grande",
+    "ecoland_subdivision_sm_city_of_davao",
+    "jade_valley",
+    "maa_agdao",
+    "matina",
+    "matina_aplaya",
+    "matina_crossing",
+    "matina_pangi",
+    "sasa_via_cabaguio_avenue",
+    "sasa_via_jp_laurel_avenue",
+    "talomo"
+   ]
+  },
+  {
+   "id": "lm-seawind",
+   "name": "Seawind",
+   "lat": 7.136392515904427,
+   "lng": 125.66140074012007,
+   "source": "curated",
+   "category": "waterfront",
+   "routes": [
+    "bunawan_via_sasa",
+    "lasang_via_sasa",
+    "panacan_sm_city_route",
+    "panacan_via_cabaguio_avenue",
+    "sasa_via_cabaguio_avenue",
+    "sasa_via_jp_laurel_avenue",
+    "sasa_via_r_castillo_street",
+    "tibungco_via_cabaguio_avenue",
+    "tibungco_via_r_castillo_avenue"
+   ]
+  },
+  {
+   "id": "lm-smLanang",
+   "name": "SM Lanang Premier",
+   "lat": 7.099112338336151,
+   "lng": 125.63112972672056,
+   "source": "curated",
+   "category": "mall",
+   "routes": []
+  },
+  {
+   "id": "wd-Q7391499",
+   "name": "SM Lanang Premier",
+   "lat": 7.09879722,
+   "lng": 125.63114167,
+   "source": "wikidata",
+   "category": "mall",
+   "routes": []
+  },
+  {
+   "id": "osm-node-12443768701",
+   "name": "SMTTI Terminal",
+   "lat": 7.0472519,
+   "lng": 125.5908496,
+   "source": "osm",
+   "category": "terminal",
+   "routes": [
+    "ecoland_subdivision_sm_city_of_davao"
+   ]
+  },
+  {
+   "id": "lm-southernPhilippinesMedicalCenter",
+   "name": "Southern Philippines Medical Center",
+   "lat": 7.098617564742807,
+   "lng": 125.61993345555625,
+   "source": "curated",
+   "category": "landmark",
+   "routes": [
+    "bunawan_via_sasa",
+    "lasang_via_sasa",
+    "panacan_sm_city_route",
+    "panacan_via_cabaguio_avenue",
+    "sasa_via_cabaguio_avenue",
+    "sasa_via_jp_laurel_avenue",
+    "sasa_via_r_castillo_street",
+    "tibungco_via_cabaguio_avenue",
+    "tibungco_via_r_castillo_avenue"
+   ]
+  },
+  {
+   "id": "wd-Q7591351",
+   "name": "St. Peter's College of Toril",
+   "lat": 7.02135,
+   "lng": 125.49977,
+   "source": "wikidata",
+   "category": "university",
+   "routes": [
+    "toril",
+    "ulas"
+   ]
+  },
+  {
+   "id": "lm-smad",
+   "name": "Stella Maris Academy of Davao",
+   "lat": 7.086613164902036,
+   "lng": 125.61880453836405,
+   "source": "curated",
+   "category": "school",
+   "routes": []
+  },
+  {
+   "id": "lm-sutherland",
+   "name": "Sutherland Global Services",
+   "lat": 7.076437104924146,
+   "lng": 125.61101133669654,
+   "source": "curated",
+   "category": "landmark",
+   "routes": [
+    "buhangin_via_jp_laurel_avenue",
+    "calinan",
+    "jade_valley",
+    "matina_pangi",
+    "mintal",
+    "panacan_sm_city_route",
+    "ulas"
+   ]
+  },
+  {
+   "id": "wd-Q7795703",
+   "name": "Thompson Christian School",
+   "lat": 7.07492611,
+   "lng": 125.60303639,
+   "source": "wikidata",
+   "category": "school",
+   "routes": []
+  },
+  {
+   "id": "osm-node-1228099307",
+   "name": "Ulas Mini Market",
+   "lat": 7.055101,
+   "lng": 125.5451991,
+   "source": "osm",
+   "category": "market",
+   "routes": [
+    "bago_aplaya",
+    "calinan",
+    "talomo",
+    "toril",
+    "ulas"
+   ]
+  },
+  {
+   "id": "osm-node-1424026278",
+   "name": "Unicity",
+   "lat": 7.0657499,
+   "lng": 125.608141,
+   "source": "osm",
+   "category": "mall",
+   "routes": [
+    "bago_aplaya",
+    "bangkal",
+    "catalunan_grande",
+    "emily_homes",
+    "maa_agdao",
+    "matina",
+    "matina_aplaya",
+    "matina_crossing",
+    "matina_pangi",
+    "sasa_via_cabaguio_avenue",
+    "sasa_via_jp_laurel_avenue"
+   ]
+  },
+  {
+   "id": "osm-node-8211968518",
+   "name": "United Calinan L300 Terminal",
+   "lat": 7.0688287,
+   "lng": 125.6028298,
+   "source": "osm",
+   "category": "terminal",
+   "routes": [
+    "bago_aplaya",
+    "bangkal",
+    "buhangin_via_jp_laurel_avenue",
+    "calinan",
+    "catalunan_grande",
+    "ecoland_subdivision_sm_city_of_davao",
+    "jade_valley",
+    "maa_agdao",
+    "maa_bankerohan",
+    "matina",
+    "matina_aplaya",
+    "matina_crossing",
+    "matina_pangi",
+    "mintal",
+    "panacan_sm_city_route",
+    "talomo",
+    "toril",
+    "ulas"
+   ]
+  },
+  {
+   "id": "lm-universityOfMindanao",
+   "name": "University of Mindanao",
+   "lat": 7.067469644701064,
+   "lng": 125.60919345370667,
+   "source": "curated",
+   "category": "university",
+   "routes": [
+    "bago_aplaya",
+    "bangkal",
+    "catalunan_grande",
+    "emily_homes",
+    "maa_agdao",
+    "matina",
+    "matina_aplaya",
+    "matina_crossing",
+    "sasa_via_cabaguio_avenue",
+    "sasa_via_jp_laurel_avenue",
+    "toril",
+    "ulas"
+   ]
+  },
+  {
+   "id": "wd-Q2485032",
+   "name": "University of Mindanao",
+   "lat": 7.067222,
+   "lng": 125.594944,
+   "source": "wikidata",
+   "category": "university",
+   "routes": []
+  },
+  {
+   "id": "lm-usep",
+   "name": "University of Southeastern Philippines",
+   "lat": 7.086397519912902,
+   "lng": 125.61557509645901,
+   "source": "curated",
+   "category": "university",
+   "routes": [
+    "bunawan_via_buhangin",
+    "lasang_via_buhangin"
+   ]
+  },
+  {
+   "id": "wd-Q2485026",
+   "name": "University of Southeastern Philippines",
+   "lat": 7.086222,
+   "lng": 125.616944,
+   "source": "wikidata",
+   "category": "university",
+   "routes": [
+    "bunawan_via_buhangin",
+    "lasang_via_buhangin"
+   ]
+  },
+  {
+   "id": "wd-Q7896707",
+   "name": "University of the Immaculate Conception",
+   "lat": 7.06983333,
+   "lng": 125.60011111,
+   "source": "wikidata",
+   "category": "university",
+   "routes": []
+  },
+  {
+   "id": "wd-Q3550203",
+   "name": "University of the Philippines Mindanao",
+   "lat": 7.08572,
+   "lng": 125.485,
+   "source": "wikidata",
+   "category": "university",
+   "routes": []
+  },
+  {
+   "id": "lm-waterFront",
+   "name": "Waterfront Insular Hotel Davao",
+   "lat": 7.106582089135629,
+   "lng": 125.65012850573144,
+   "source": "curated",
+   "category": "waterfront",
+   "routes": []
+  }
+ ]
+}

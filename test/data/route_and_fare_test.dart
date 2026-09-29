@@ -30,7 +30,7 @@ void main() {
     test('imports every bundled route into the database once', () async {
       final repository = RouteRepository(database: database);
 
-      final first = await repository.seedIfEmpty();
+      final first = await repository.seedIfStale();
       expect(first.isSuccess, isTrue);
       expect(
         first.dataOrNull,
@@ -38,7 +38,7 @@ void main() {
         reason: 'first run should import every manifest entry',
       );
 
-      final second = await repository.seedIfEmpty();
+      final second = await repository.seedIfStale();
       expect(second.dataOrNull, 0, reason: 'second run should be a no-op');
 
       final routes = await repository.getAllRoutes();
@@ -47,7 +47,7 @@ void main() {
 
     test('stores stops and totals for a known route', () async {
       final repository = RouteRepository(database: database);
-      await repository.seedIfEmpty();
+      await repository.seedIfStale();
 
       final route = (await repository.getRouteByCodeName('marilog')).dataOrNull;
 
@@ -60,7 +60,7 @@ void main() {
 
     test('returns a not-found failure for an unknown route', () async {
       final repository = RouteRepository(database: database);
-      await repository.seedIfEmpty();
+      await repository.seedIfStale();
 
       final result = await repository.getRouteByCodeName('does_not_exist');
 
@@ -70,12 +70,13 @@ void main() {
 
     test('splits "via" display names into landmarks', () async {
       final repository = RouteRepository(database: database);
-      await repository.seedIfEmpty();
+      await repository.seedIfStale();
 
-      final route =
-          (await repository.getRouteByCodeName('tibungco_via_buhangin')).dataOrNull!;
+      final route = (await repository.getRouteByCodeName(
+        'tibungco_via_buhangin',
+      )).dataOrNull!;
 
-      expect(route.landmarks, ['Tibungco', 'Buhangin']);
+      expect(route.viaLabels, ['Tibungco', 'Buhangin']);
     });
   });
 
@@ -91,7 +92,9 @@ void main() {
 
       expect(container.read(fareEstimateProvider('matina')), isNull);
 
-      final matina = (await container.read(routeDetailProvider('matina').future));
+      final matina = (await container.read(
+        routeDetailProvider('matina').future,
+      ));
       container
           .read(fareSelectionProvider('matina').notifier)
           .setOrigin(matina.stopsInOrder.first);
@@ -134,9 +137,15 @@ void main() {
         ..setOrigin(stops.first)
         ..setDestination(stops.last);
 
-      final before = container.read(fareEstimateProvider('matina'))!.regular.total;
+      final before = container
+          .read(fareEstimateProvider('matina'))!
+          .regular
+          .total;
       notifier.swap();
-      final after = container.read(fareEstimateProvider('matina'))!.regular.total;
+      final after = container
+          .read(fareEstimateProvider('matina'))!
+          .regular
+          .total;
 
       expect(after, before);
       expect(
@@ -167,7 +176,7 @@ void main() {
   group('Popular routes', () {
     test('is empty before any ride is recorded', () async {
       final repository = RouteRepository(database: database);
-      await repository.seedIfEmpty();
+      await repository.seedIfStale();
 
       final popular = await repository.getPopularRoutes();
 
@@ -180,7 +189,7 @@ void main() {
 
     test('counts each recorded ride against its route', () async {
       final repository = RouteRepository(database: database);
-      await repository.seedIfEmpty();
+      await repository.seedIfStale();
 
       await repository.recordUsage('matina');
       await repository.recordUsage('matina');
@@ -194,7 +203,7 @@ void main() {
 
     test('ranks by usage rather than a curated list', () async {
       final repository = RouteRepository(database: database);
-      await repository.seedIfEmpty();
+      await repository.seedIfStale();
 
       for (var i = 0; i < 5; i++) {
         await repository.recordUsage('tugbok');
@@ -209,7 +218,7 @@ void main() {
 
     test('excludes routes the user has never ridden', () async {
       final repository = RouteRepository(database: database);
-      await repository.seedIfEmpty();
+      await repository.seedIfStale();
 
       await repository.recordUsage('matina');
 
@@ -221,7 +230,7 @@ void main() {
 
     test('breaks ties on most recent use', () async {
       final repository = RouteRepository(database: database);
-      await repository.seedIfEmpty();
+      await repository.seedIfStale();
 
       await repository.recordUsage('matina');
       await Future<void>.delayed(const Duration(milliseconds: 20));
@@ -229,16 +238,15 @@ void main() {
 
       final popular = (await repository.getPopularRoutes()).dataOrNull!;
 
-      expect(
-        popular.map((route) => route.codeName),
-        ['marilog', 'matina'],
-        reason: 'equal counts should put the more recent route first',
-      );
+      expect(popular.map((route) => route.codeName), [
+        'marilog',
+        'matina',
+      ], reason: 'equal counts should put the more recent route first');
     });
 
     test('honours the requested limit', () async {
       final repository = RouteRepository(database: database);
-      await repository.seedIfEmpty();
+      await repository.seedIfStale();
 
       for (final codeName in ['matina', 'marilog', 'tugbok']) {
         await repository.recordUsage(codeName);
@@ -251,7 +259,7 @@ void main() {
 
     test('a failed usage write does not break fare calculation', () async {
       final repository = RouteRepository(database: database);
-      await repository.seedIfEmpty();
+      await repository.seedIfStale();
 
       await repository.recordUsage('does_not_exist');
 
@@ -263,7 +271,7 @@ void main() {
   group('End-to-end fare estimate over real route data', () {
     test('prices a real Matina trip for every category', () async {
       final repository = RouteRepository(database: database);
-      await repository.seedIfEmpty();
+      await repository.seedIfStale();
 
       final route = (await repository.getRouteByCodeName('matina')).dataOrNull!;
       const calculator = FareCalculator();
@@ -276,9 +284,9 @@ void main() {
       );
 
       for (final category in PassengerCategory.values) {
-        final result = calculator.calculate(
-          startKm: bankerohan.kmIndex,
-          endKm: agdao.kmIndex,
+        final result = calculator.calculateByKmIndex(
+          startKmIndex: bankerohan.kmIndex,
+          endKmIndex: agdao.kmIndex,
           category: category,
         );
 

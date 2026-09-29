@@ -26,7 +26,7 @@ final filteredRoutesProvider = Provider<AsyncValue<List<JeepneyRoute>>>((ref) {
         .where(
           (route) =>
               route.displayName.toLowerCase().contains(query) ||
-              route.landmarks.any(
+              route.viaLabels.any(
                 (landmark) => landmark.toLowerCase().contains(query),
               ),
         )

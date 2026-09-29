@@ -1,6 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/utils/fare_calculator.dart';
+import '../../../../core/utils/trip_distance.dart';
 import '../../../../data/models/passenger_category.dart';
 import '../../../../data/models/route_stop.dart';
 import '../../../../data/providers/route_providers.dart';
@@ -59,9 +60,12 @@ final fareEstimateProvider =
       final origin = selection.origin!;
       final destination = selection.destination!;
 
-      FareBreakdown priceFor(PassengerCategory category) => calculator.calculate(
-        startKm: origin.kmIndex,
-        endKm: destination.kmIndex,
+      // The fare is priced from the published kilometre marks. Measured road
+      // geometry is carried alongside as information only - see
+      // `assets/geo/stops_REVIEW.md` for why it is not authoritative.
+      FareBreakdown priceFor(PassengerCategory category) => calculator.calculateByKmIndex(
+        startKmIndex: origin.kmIndex,
+        endKmIndex: destination.kmIndex,
         category: category,
       );
 
@@ -69,5 +73,11 @@ final fareEstimateProvider =
         regular: priceFor(PassengerCategory.regular),
         discounted: priceFor(PassengerCategory.student),
         fareRules: calculator.rules,
+        roadDistance: resolveTripDistance(
+          startDecimetres: origin.distDm,
+          endDecimetres: destination.distDm,
+          startKmIndex: origin.kmIndex,
+          endKmIndex: destination.kmIndex,
+        ),
       );
     });

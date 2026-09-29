@@ -9,14 +9,24 @@ import 'tables/app_tables.dart';
 
 part 'app_database.g.dart';
 
-@DriftDatabase(tables: [JeepneyRoutes, RouteStops, Trips])
+@DriftDatabase(
+  tables: [
+    JeepneyRoutes,
+    RouteStops,
+    RouteGeometries,
+    LandmarkEntries,
+    RouteLandmarks,
+    Trips,
+    AppMeta,
+  ],
+)
 class AppDatabase extends _$AppDatabase {
   AppDatabase() : super(_openConnection());
 
   AppDatabase.forTesting(super.executor);
 
   @override
-  int get schemaVersion => 2;
+  int get schemaVersion => 3;
 
   @override
   MigrationStrategy get migration => MigrationStrategy(
@@ -27,6 +37,18 @@ class AppDatabase extends _$AppDatabase {
         await migrator.addColumn(jeepneyRoutes, jeepneyRoutes.usageCount);
         await migrator.addColumn(jeepneyRoutes, jeepneyRoutes.lastUsedAt);
       }
+      if (from < 3) {
+        // Stop coordinates and the map tables. The columns stay null until
+        // route data is re-seeded; see RouteRepository.reseedIfStale, which
+        // matches existing routes by codeName so usage history survives.
+        await migrator.addColumn(routeStops, routeStops.lat);
+        await migrator.addColumn(routeStops, routeStops.lng);
+        await migrator.addColumn(routeStops, routeStops.distDm);
+        await migrator.createTable(routeGeometries);
+        await migrator.createTable(landmarkEntries);
+        await migrator.createTable(routeLandmarks);
+        await migrator.createTable(appMeta);
+      }
     },
   );
 
@@ -34,6 +56,19 @@ class AppDatabase extends _$AppDatabase {
     final count = await (select(jeepneyRoutes)..limit(1)).get();
     return count.isNotEmpty;
   }
+
+  /// The version of the bundled route data currently in the database.
+  Future<String?> get contentVersion async {
+    final row = await (select(appMeta)..where((t) => t.key.equals('contentVersion')))
+        .getSingleOrNull();
+    return row?.value;
+  }
+
+  Future<void> setContentVersion(String value) =>
+      into(appMeta).insertOnConflictUpdate(AppMetaCompanion.insert(
+        key: 'contentVersion',
+        value: value,
+      ));
 }
 
 LazyDatabase _openConnection() {

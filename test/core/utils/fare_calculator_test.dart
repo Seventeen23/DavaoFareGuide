@@ -8,9 +8,9 @@ void main() {
 
   group('FareCalculator base fares', () {
     test('charges nothing when start and end are the same stop', () {
-      final result = calculator.calculate(
-        startKm: 12,
-        endKm: 12,
+      final result = calculator.calculateByKmIndex(
+        startKmIndex: 12,
+        endKmIndex: 12,
         category: PassengerCategory.regular,
       );
 
@@ -21,9 +21,9 @@ void main() {
 
     test('charges the flat base fare within the included 4 km', () {
       for (final km in [1, 2, 3, 4]) {
-        final result = calculator.calculate(
-          startKm: 0,
-          endKm: km,
+        final result = calculator.calculateByKmIndex(
+          startKmIndex: 0,
+          endKmIndex: km,
           category: PassengerCategory.regular,
         );
 
@@ -34,9 +34,9 @@ void main() {
     });
 
     test('adds 2.00 per km beyond the included 4 km', () {
-      final result = calculator.calculate(
-        startKm: 0,
-        endKm: 10,
+      final result = calculator.calculateByKmIndex(
+        startKmIndex: 0,
+        endKmIndex: 10,
         category: PassengerCategory.regular,
       );
 
@@ -46,14 +46,14 @@ void main() {
     });
 
     test('is direction independent', () {
-      final forward = calculator.calculate(
-        startKm: 5,
-        endKm: 25,
+      final forward = calculator.calculateByKmIndex(
+        startKmIndex: 5,
+        endKmIndex: 25,
         category: PassengerCategory.regular,
       );
-      final backward = calculator.calculate(
-        startKm: 25,
-        endKm: 5,
+      final backward = calculator.calculateByKmIndex(
+        startKmIndex: 25,
+        endKmIndex: 5,
         category: PassengerCategory.regular,
       );
 
@@ -68,9 +68,9 @@ void main() {
         PassengerCategory.senior,
         PassengerCategory.pwd,
       ]) {
-        final result = calculator.calculate(
-          startKm: 0,
-          endKm: 10,
+        final result = calculator.calculateByKmIndex(
+          startKmIndex: 0,
+          endKmIndex: 10,
           category: category,
         );
 
@@ -81,9 +81,9 @@ void main() {
     });
 
     test('discounts the flat base fare within the included 4 km', () {
-      final result = calculator.calculate(
-        startKm: 0,
-        endKm: 4,
+      final result = calculator.calculateByKmIndex(
+        startKmIndex: 0,
+        endKmIndex: 4,
         category: PassengerCategory.senior,
       );
 
@@ -92,9 +92,9 @@ void main() {
     });
 
     test('does not discount regular riders', () {
-      final result = calculator.calculate(
-        startKm: 0,
-        endKm: 10,
+      final result = calculator.calculateByKmIndex(
+        startKmIndex: 0,
+        endKmIndex: 10,
         category: PassengerCategory.regular,
       );
 
@@ -103,9 +103,9 @@ void main() {
     });
 
     test('never applies a discount on a zero-distance trip', () {
-      final result = calculator.calculate(
-        startKm: 7,
-        endKm: 7,
+      final result = calculator.calculateByKmIndex(
+        startKmIndex: 7,
+        endKmIndex: 7,
         category: PassengerCategory.pwd,
       );
 
@@ -117,7 +117,11 @@ void main() {
       for (final category in PassengerCategory.values) {
         for (var km = 0; km <= 40; km++) {
           final total = calculator
-              .calculate(startKm: 0, endKm: km, category: category)
+              .calculateByKmIndex(
+                startKmIndex: 0,
+                endKmIndex: km,
+                category: category,
+              )
               .total;
           expect(total.centavos, greaterThanOrEqualTo(0));
         }
@@ -134,14 +138,19 @@ void main() {
     });
 
     test('falls back to regular for unknown labels', () {
-      expect(PassengerCategory.fromLabel('nonsense'), PassengerCategory.regular);
+      expect(
+        PassengerCategory.fromLabel('nonsense'),
+        PassengerCategory.regular,
+      );
     });
 
     test('matches the four categories offered by the legacy login screen', () {
-      expect(
-        PassengerCategory.values.map((category) => category.label),
-        ['Regular', 'Student', 'Senior', 'PWD'],
-      );
+      expect(PassengerCategory.values.map((category) => category.label), [
+        'Regular',
+        'Student',
+        'Senior',
+        'PWD',
+      ]);
     });
   });
 }

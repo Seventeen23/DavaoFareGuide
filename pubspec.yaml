@@ -43,3 +43,8 @@ flutter:
 
   assets:
     - assets/routes/
+    - assets/landmarks.json
+    # The unverified subfolder is deliberately NOT bundled. Quarantined
+    # Route 1-15 geometry stays on disk for review and is not shipped.
+    - assets/geo/routes.json
+    - assets/geo/stops.json
