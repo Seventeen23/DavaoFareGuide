@@ -23,6 +23,13 @@
 - [x] Replace the legacy discount deduction with a 20% discount (`discountPercent`) and delete
       the legacy `LegacyAlgo` parity tests
 - [x] Build a release APK under the current fare spec (`build/app/outputs/flutter-apk/app-release.apk`)
+- [x] Fix the home screen reporting "No matching routes" when seeding had failed — SQLite's
+      `PRAGMA foreign_keys` was off, so the re-seed orphaned every stop row, and the failure was
+      swallowed into an empty list. 7 re-seed tests + 4 home/provider tests cover it
+- [x] Search and browse landmarks — `landmarkListProvider` over 98 bundled landmarks,
+      `landmarkMatchesProvider` ranking, a home-screen landmark section, a `/landmarks` browser
+      with category chips, and a "routes passing through X" sheet (22 tests). The 24 unlinked
+      landmarks say "no route serves this yet" instead of "0 routes"
 
 ## Next
 
@@ -30,6 +37,10 @@
 - [ ] Splash branding (currently ships the default Flutter splash)
 - [ ] Verify on a physical device — frame timings on the `lavapipe` emulator are not representative
 - [ ] Re-run `flutter analyze` + `flutter test` and rebuild the APK whenever fare rules change
+- [ ] Capture a stack trace if the on-device crash recurs; it was reported once alongside the
+      "no routes" bug and never diagnosed
+- [ ] **Landmark hygiene**: link the 24 unlinked landmarks by proximity, or drop them (they are
+      browsable but cannot be resolved to a route)
 
 ## Most popular routes
 
@@ -147,22 +158,19 @@ Still open:
 - [ ] Decide the four disputed routes (`toril`, `ulas`, `tibungco_via_cabaguio_avenue`,
       `ecoland_subdivision_sm_city_of_davao`): which length is authoritative, the site's or the
       curated `totalKm`? Until then they publish no distance at all.
-- [ ] 24 landmarks are on no route, so they cannot be drawn; link them by proximity or drop them
 
 Risks / notes:
 
 - Subdivision stop names ("Rosalina III", "Landmark III") geocode imperfectly → the manual-review
   step in the geocoding job.
 - Straight segments between stops — the map corridor is approximate, no road-following.
-- Bonus tie-in: once stops have coords, "Landmarks and routes passing through X" becomes nearly
-  free. `assets/landmarks.json` is already bundled and seeded; only the UI is missing.
+- Landmark search now ships (`/landmarks`); linking the 24 orphan landmarks by proximity is the
+  remaining tie-in before a landmark can always be resolved to routes.
 
 ## Later
 
 - [ ] Trip history — deliberately deferred; the user-facing history list is not needed yet
 - [ ] Favourited and recently used routes
-- [ ] Landmarks and "routes passing through X" search — the data is already bundled and seeded
-      (98 landmarks, 74 of them linked to a route); only the search UI is missing
 - [ ] Real-time service advisories, which require a backend
 - [ ] Optional fare and route data sync from a remote source
 
@@ -179,4 +187,5 @@ Risks / notes:
 - Trip history directories exist but are unpopulated; the feature is not wired up.
 - The map data is display-only and unshipped-in-spirit: `assets/geo/PROVENANCE.md` records that
   the source geometry has no licence, so a release built today would redistribute it.
-- The root disk sits at 96% capacity. Gradle and emulator work are both slowed by this.
+- The root disk sits at 87% capacity (33 GB free). Gradle and emulator work are both slowed by
+  this; it has been as high as 96%, so check `df -h /` before blaming the toolchain.

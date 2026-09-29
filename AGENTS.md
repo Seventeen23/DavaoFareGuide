@@ -45,6 +45,20 @@ computes a fare between two stops on a fixed route. Do **not** modify anything u
   a failed seed leaves the route tables empty, and reporting that as "no routes" sends the user
   hunting for a search problem they do not have. `home_screen.dart`'s empty view is also gated on
   `hasQuery` so an empty list with an untouched search box reads as a load failure.
+- **Landmarks are searchable, and that is the whole point of the `route_landmarks` links.**
+  `landmarkListProvider` (`data/providers/route_providers.dart`) reads all 98 from the asset via
+  `RouteRepository.getAllLandmarks`; `landmarkMatchesProvider` ranks matches (exact name > prefix >
+  name contains > category); `landmarkRouteCodesProvider` turns a matching landmark into route
+  codes; `filteredRoutesProvider` unions those with the plain name search. So typing "Abreeza
+  Mall" returns the 15 routes that pass it, not zero — no route is called Abreeza. The 24
+  unlinked landmarks are shown but say "no route serves this yet" rather than "0 routes".
+  UI: `home_screen.dart`'s `_LandmarksSliver` (browse card with no query, matches with one),
+  `landmarks_screen.dart` (browser + category chips + "routes passing through" sheet),
+  `widgets/landmark_tile.dart`. Route is `/landmarks`.
+- **Widget tests must not do real I/O inside the test body.** Asset reads and DB seeding hang in
+  the fake-async zone. Load fixtures in `setUp` (real async) and override
+  `landmarkListProvider` / `routeListProvider` (`test/features/home/landmarks_screen_test.dart`).
+  Also: never `pumpAndSettle` after typing into a `TextField` — the cursor blink never settles.
 - **Do not hardcode or curate popularity list.** "Most popular routes" on the home screen is
   derived from per-route `usageCount` + `lastUsedAt` (Drift `JeepneyRoutes` schema v2,
   `RouteDao.recordUsage` / `getPopularRoutes`). Trigger: `ref.listen` in the fare calculator
@@ -92,11 +106,13 @@ flutter test test/core/utils/fare_calculator_test.dart
 flutter test test/data/route_and_fare_test.dart
 flutter test test/data/geo/
 flutter test test/data/reseed_test.dart       # the re-seed path; a fresh install skips it
-flutter test test/features/home/
+flutter test test/features/home/      # home list, landmark search + landmark screen
+flutter test test/features/home/landmark_search_test.dart
 python3 tool/place_stops.py            # regenerates assets/geo/stops.json
 ```
 
-Host is tight on disk (~96% full); Gradle/emulator are slower than usual.
+Host disk sat at 87% (33 GB free) as of the last release build; it was at 96% earlier, so check
+`df -h /` before assuming Gradle or the emulator will be slow.
 
 ## Fare test expectations (update together with `FareRules`)
 
@@ -108,14 +124,22 @@ discounted `Money(1280)`, saving `Money(320)`; end-to-end closeTo `16.0` / `12.8
 
 ## State of the world (what a fresh session should assume)
 
-- 95 tests passing (41 fare/route + 31 geo data + 7 re-seed + 10 home/provider + 6 fare card),
-  `flutter analyze` clean, release APK built (57.7 MB, **unsigned**, and predating the geo layer).
-- The geo layer is seeded and reachable (`RouteRepository.getGeometry` / `getLandmarks`,
-  `route_geometries` + `landmark_entries` tables); the fare card now shows the measured road
-  distance beside the priced km, but **no UI draws the geometry** yet.
+- 117 tests passing (47 fare/route + 31 geo data + 7 re-seed + 26 home/landmark + 6 fare card),
+  `flutter analyze` clean, release APK built (58.4 MB, **unsigned**) and current with the geo
+  layer, the cascade fix, and the landmark search UI. No commit yet — the working tree holds all
+  of the above.
+- The geo layer is seeded and reachable (`RouteRepository.getGeometry` / `getLandmarks` /
+  `getAllLandmarks`, `route_geometries` + `landmark_entries` tables); landmarks are now searchable
+  and browsable, and the fare card shows the measured road distance beside the priced km, but
+  **no UI draws the route geometry yet**.
 - The home-screen "no routes" bug is fixed and covered. If the user reports it again on device,
   suspect the app's database file, not the query: the re-seed now cascades correctly, so an
-  empty list means seeding genuinely failed and the error view should be showing.
+  empty list means seeding genuinely failed and the error view should be showing. A device that
+  already has the pre-fix database may still be holding orphaned stop rows from the failed
+  re-seed; uninstalling (or deleting the app's data) is the way to clear them, since the fix only
+  governs future re-seeds.
+- The crash the user saw alongside the empty list was never captured — no stack trace, and it is
+  not known whether it shares a cause with the cascade bug.
 - On-device selection persistence after the picker closes is still unresolved — that is the next
   open item, and the `[PICK]` debug logs are still in place for it.
 - Wiring lives in `data/providers/route_providers.dart`, `data/repositories/route_repository.dart`,

@@ -6,9 +6,11 @@ import '../../../../app/router/app_router.dart';
 import '../../../../app/theme/app_theme.dart';
 import '../../../../core/widgets/app_card.dart';
 import '../../../../core/widgets/app_empty_view.dart';
+import '../../../../data/models/geo.dart';
 import '../../../../data/models/jeepney_route.dart';
 import '../../../../data/providers/route_providers.dart';
 import '../providers/route_search_provider.dart';
+import '../widgets/landmark_tile.dart';
 import '../widgets/route_tile.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
@@ -119,7 +121,11 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               ),
             ),
           ),
-          const _PopularRoutesSliver(),
+          _LandmarksSliver(
+            hasQuery: _hasQuery,
+            onSelectQuery: _setQuery,
+          ),
+          if (!_hasQuery) const _PopularRoutesSliver(),
           routesAsync.when(
             loading: () => const SliverFillRemaining(
               hasScrollBody: false,
@@ -141,6 +147,216 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+/// Landmarks are the third thing the home screen can answer, alongside routes
+/// and the search box itself.
+///
+/// With a query it lists what matched, and tapping one narrows the route list
+/// below to the routes passing through it. With no query it is just the way
+/// into the browser, because the data has been seeded all along and a list of
+/// 98 places with no ranking is not something to dump on the first screen.
+class _LandmarksSliver extends ConsumerWidget {
+  const _LandmarksSliver({required this.hasQuery, required this.onSelectQuery});
+
+  final bool hasQuery;
+  final ValueChanged<String> onSelectQuery;
+
+  /// Enough to see whether the search landed, without pushing the route list
+  /// off the screen.
+  static const int _maxResults = 6;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final landmarksAsync = ref.watch(landmarkListProvider);
+    final matchesAsync = ref.watch(landmarkMatchesProvider);
+    final textTheme = Theme.of(context).textTheme;
+
+    return landmarksAsync.when(
+      loading: () => const SliverToBoxAdapter(child: SizedBox.shrink()),
+      error: (_, _) => const SliverToBoxAdapter(child: SizedBox.shrink()),
+      data: (landmarks) {
+        if (landmarks.isEmpty) {
+          return const SliverToBoxAdapter(child: SizedBox.shrink());
+        }
+        if (!hasQuery) return _browseCard(context, landmarks.length);
+
+        final matches = matchesAsync.value ?? const [];
+        if (matches.isEmpty) {
+          return const SliverToBoxAdapter(child: SizedBox.shrink());
+        }
+
+        final shown = matches.take(_maxResults).toList();
+        final linkedShown =
+            shown.where((landmark) => landmark.isLinked).length;
+
+        return SliverToBoxAdapter(
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(
+              AppSpacing.xl,
+              AppSpacing.xl,
+              AppSpacing.xl,
+              AppSpacing.sm,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    const Icon(
+                      Icons.place_rounded,
+                      size: 17,
+                      color: AppColors.brand,
+                    ),
+                    const SizedBox(width: AppSpacing.sm),
+                    Text(
+                      'Landmarks',
+                      style: textTheme.titleSmall,
+                    ),
+                    const Spacer(),
+                    Text(
+                      '${matches.length} match${matches.length == 1 ? '' : 'es'}',
+                      style: textTheme.bodySmall,
+                    ),
+                  ],
+                ),
+                const SizedBox(height: AppSpacing.xs),
+                Text(
+                  linkedShown == 0
+                      ? 'None of these are on a mapped route yet.'
+                      : 'Tap one to see the routes that pass it.',
+                  style: textTheme.bodySmall,
+                ),
+                const SizedBox(height: AppSpacing.md),
+                for (var i = 0; i < shown.length; i++) ...[
+                  if (i > 0) const SizedBox(height: AppSpacing.sm),
+                  LandmarkTile(
+                    landmark: shown[i],
+                    onTap: () => _select(context, shown[i]),
+                  ),
+                ],
+                if (matches.length > shown.length) ...[
+                  const SizedBox(height: AppSpacing.sm),
+                  _TextAction(
+                    label: 'See all ${matches.length} landmarks',
+                    onTap: () => context.push(Routes.landmarks),
+                  ),
+                ],
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  /// Tapping a landmark turns it into the query, so the route list underneath
+  /// becomes the answer to "which routes pass through here". That is the whole
+  /// point of seeding the landmark-to-route links. Refreshing the parent's
+  /// query (not just the provider) keeps the search box and the browse card in
+  /// step with the filtered list.
+  void _select(BuildContext context, MapLandmark landmark) {
+    if (!landmark.isLinked) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('No jeepney route serves ${landmark.name} yet.'),
+        ),
+      );
+      return;
+    }
+    onSelectQuery(landmark.name);
+  }
+
+  Widget _browseCard(BuildContext context, int count) {
+    final textTheme = Theme.of(context).textTheme;
+
+    return SliverToBoxAdapter(
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(
+          AppSpacing.xl,
+          AppSpacing.xl,
+          AppSpacing.xl,
+          AppSpacing.sm,
+        ),
+        child: AppCard(
+          onTap: () => context.push(Routes.landmarks),
+          padding: const EdgeInsets.symmetric(
+            horizontal: AppSpacing.lg,
+            vertical: AppSpacing.md,
+          ),
+          child: Row(
+            children: [
+              Container(
+                width: 40,
+                height: 40,
+                decoration: BoxDecoration(
+                  color: AppColors.brandSurface,
+                  borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
+                ),
+                child: const Icon(
+                  Icons.place_rounded,
+                  color: AppColors.brand,
+                  size: 20,
+                ),
+              ),
+              const SizedBox(width: AppSpacing.lg),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text('Browse landmarks', style: textTheme.titleSmall),
+                    const SizedBox(height: 2),
+                    Text(
+                      'Find a place, see the routes that pass it',
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: textTheme.bodySmall,
+                    ),
+                  ],
+                ),
+              ),
+              const Icon(
+                Icons.chevron_right_rounded,
+                color: AppColors.inkMuted,
+                size: 20,
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _TextAction extends StatelessWidget {
+  const _TextAction({required this.label, required this.onTap});
+
+  final String label;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+      alignment: Alignment.centerLeft,
+      child: TextButton(
+        onPressed: onTap,
+        style: TextButton.styleFrom(
+          padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xs),
+          minimumSize: const Size(0, 36),
+          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+        ),
+        child: Text(
+          label,
+          style: const TextStyle(
+            fontSize: 13.5,
+            fontWeight: FontWeight.w700,
+            color: AppColors.brand,
+          ),
+        ),
       ),
     );
   }

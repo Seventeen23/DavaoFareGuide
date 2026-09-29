@@ -110,6 +110,22 @@ class RouteRepository {
     }
   }
 
+  /// Every landmark in the bundle, linked or not.
+  ///
+  /// The read path is the asset rather than the seeded `landmark_entries` rows:
+  /// the asset is the source of truth for this data and reading it directly
+  /// means a landmark search cannot be broken by a database that has not been
+  /// re-seeded yet.
+  Future<Result<List<MapLandmark>>> getAllLandmarks() async {
+    try {
+      return Result.success(await _geo.loadLandmarks());
+    } on Object catch (error) {
+      return Result.failure(
+        Failure(AppFailure.database, 'Could not load landmarks.', cause: error),
+      );
+    }
+  }
+
   /// Landmarks that sit on [codeName]'s corridor.
   Future<Result<List<MapLandmark>>> getLandmarks(String codeName) async {
     try {

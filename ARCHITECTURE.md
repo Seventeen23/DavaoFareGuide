@@ -77,6 +77,15 @@ kilometre in the curated marks.
 
 Route list with search. `route_search_provider.dart` owns the query and filters the list client-side.
 
+Landmarks ride the same query. `landmarkListProvider` reads all 98 bundled landmarks;
+`landmarkMatchesProvider` ranks them (exact name > prefix > name contains > category);
+`landmarkRouteCodesProvider` maps a match to its route codes, and `filteredRoutesProvider` unions
+those with the plain route-name search. That is what makes typing "Abreeza Mall" return the 15
+routes that pass it. `_LandmarksSliver` shows a browse card when the query is empty and the
+ranked matches when it is not; `landmarks_screen.dart` is the full browser at `/landmarks`
+(search, category chips, and a "routes passing through" sheet). The 24 landmarks linked to no
+route say so rather than rendering as "0 routes".
+
 ### fare_calculator
 
 The main flow. `fare_estimate_provider.dart` derives a `FareEstimate` — boarding stop, drop-off
@@ -147,6 +156,12 @@ boarding and drop-off stops is asserted in tests.
 - `test/features/home/home_route_list_test.dart` — what the home screen is handed on a cold start:
   an untouched search box never filters, and a failed seed surfaces as an error rather than an
   empty list wearing a search-shaped message
+- `test/features/home/landmark_search_test.dart` — the landmark search providers: ranking, the
+  linked/unlinked split, and that a route-name search still works
+- `test/features/home/landmarks_screen_test.dart` — the `/landmarks` browser: search, category
+  chips, and the "routes passing through X" sheet
+- `test/features/home/home_landmarks_test.dart` — the home-screen landmark section, and that a
+  landmark query narrows the route list to the routes that pass it
 - `test/features/fare_calculator/fare_estimate_card_test.dart` — the road distance is shown beside
   the priced km, and never in place of it
 

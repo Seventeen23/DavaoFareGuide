@@ -2,6 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/result/result.dart';
 import '../local/database/app_database.dart';
+import '../models/geo.dart';
 import '../models/jeepney_route.dart';
 import '../repositories/route_repository.dart';
 
@@ -47,6 +48,13 @@ final popularRoutesProvider = FutureProvider<List<JeepneyRoute>>((ref) async {
   final repository = ref.watch(routeRepositoryProvider);
   final Result<List<JeepneyRoute>> result = await repository.getPopularRoutes();
   return result.fold((routes) => routes, (failure) => throw failure);
+});
+
+/// Every landmark in the bundle, whether or not a route serves it.
+final landmarkListProvider = FutureProvider<List<MapLandmark>>((ref) async {
+  final repository = ref.watch(routeRepositoryProvider);
+  final Result<List<MapLandmark>> result = await repository.getAllLandmarks();
+  return result.fold((landmarks) => landmarks, (failure) => throw failure);
 });
 
 /// Registers a ride against [codeName] and refreshes [popularRoutesProvider].

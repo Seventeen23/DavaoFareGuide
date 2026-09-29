@@ -49,7 +49,7 @@ lib/
   features/    home/, fare_calculator/
 assets/routes/ 69 legacy route files
 assets/geo/    generated stop placements, route geometry, landmarks
-test/          fare logic, route parsing, re-seeding, end-to-end fare checks
+test/          fare logic, route parsing, re-seeding, landmark search, end-to-end fare checks
 tool/          route manifest, geometry, and stop-placement generators
 ```
 
