@@ -147,6 +147,8 @@ Still open:
 
 - [ ] **Licensing, before any release.** The 31 polylines have no licence. Either ask the author
       for permission with credit, or rebuild the geometry from OSM highway ways.
+      **The rebuild is fully planned in [`OSM_GEOMETRY_PLAN.md`](OSM_GEOMETRY_PLAN.md) — start
+      there.**
 - [ ] Static image generator: build-time script fetches OSM tiles, draws the route polyline
       through the real stops, exports `assets/routes/{code}.png`; a test asserts every route
       ships an image

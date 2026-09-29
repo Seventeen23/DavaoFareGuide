@@ -88,8 +88,10 @@ computes a fare between two stops on a fixed route. Do **not** modify anything u
   curated `totalKm` differ by >3 km). `place_stops.py` marks them `source: disputed`. This was a
   real bug once: the ban was documented but never applied, so 17 stops shipped a distance.
 - `assets/geo/routes.json` geometry is **unlicensed** (see `assets/geo/PROVENANCE.md`) — a
-  release blocker, not a footnote. `assets/geo/unverified/` (numbered Poblacion routes 1-15) is
-  quarantined: not bundled, asserted not bundled by `test/data/geo/unverified_assets_test.dart`.
+  release blocker, not a footnote. **`OSM_GEOMETRY_PLAN.md` is the plan to replace it** with
+  OSM-routed geometry; it is written but not started. `assets/geo/unverified/` (numbered
+  Poblacion routes 1-15) is quarantined: not bundled, asserted not bundled by
+  `test/data/geo/unverified_assets_test.dart`.
 - Regenerate map data with `python3 tool/place_stops.py` (offline once
   `tool/.cache/nominatim_stops.json` is warm — it is). Re-run `test/data/geo/` after; those
   tests assert the generated output's contract.
