@@ -125,7 +125,76 @@ void main() {
       expect(notifier.state.isComplete, isTrue);
     });
 
-    test('swapping origin and destination preserves the fare', () async {
+      test('shows the measured road distance beside the kmIndex fare', () async {
+        final container = makeContainer();
+        await loadRoute(container);
+
+        final route = await container.read(routeDetailProvider('matina').future);
+        final stops = route.stopsInOrder;
+        final notifier = container.read(fareSelectionProvider('matina').notifier);
+
+        // Matina (km 0) and UM (km 9) were both snapped onto the polyline, so
+        // this trip is measured end to end. The published marks still price it
+        // at 9 km: ₱14 + 5 × ₱2 = ₱24, whatever the road says.
+        notifier
+          ..setOrigin(stops.firstWhere((stop) => stop.name == 'Matina'))
+          ..setDestination(stops.firstWhere((stop) => stop.name == 'UM (Bangoy)'));
+
+        final estimate = container.read(fareEstimateProvider('matina'))!;
+
+        expect(estimate.distanceKm, 9);
+        expect(estimate.hasRoadDistance, isTrue);
+        expect(estimate.shownRoadDistance, isNotNull);
+        expect(
+          estimate.roadDistance!.isPrecise,
+          isTrue,
+          reason: 'both ends were placed, so this is a measurement',
+        );
+        expect(
+          estimate.roadDistance!.wholeKilometers,
+          lessThan(estimate.distanceKm),
+          reason: 'the road is shorter than the published marks on this leg',
+        );
+        expect(
+          estimate.regular.total,
+          const Money(2400),
+          reason: 'a measured distance is displayed, never charged',
+        );
+        expect(
+          estimate.regular.distance.isEstimated,
+          isTrue,
+          reason: 'the fare itself is still priced from kmIndex',
+        );
+      });
+
+      test('hides the road distance when an end could not be placed', () async {
+        final container = makeContainer();
+        await loadRoute(container);
+
+        final route = await container.read(routeDetailProvider('matina').future);
+        final stops = route.stopsInOrder;
+
+        container.read(fareSelectionProvider('matina').notifier)
+          ..setOrigin(stops.firstWhere((stop) => stop.name == 'Bankerohan'))
+          ..setDestination(stops.firstWhere((stop) => stop.name == 'Agdao'));
+
+        final estimate = container.read(fareEstimateProvider('matina'))!;
+
+        expect(estimate.roadDistance, isNotNull);
+        expect(
+          estimate.roadDistance!.isEstimated,
+          isTrue,
+          reason: 'Bankerohan was interpolated, so the trip falls back',
+        );
+        expect(
+          estimate.shownRoadDistance,
+          isNull,
+          reason: 'an estimated distance must not be presented as measured',
+        );
+        expect(estimate.hasRoadDistance, isFalse);
+      });
+
+      test('swapping origin and destination preserves the fare', () async {
       final container = makeContainer();
       await loadRoute(container);
 

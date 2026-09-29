@@ -33,10 +33,23 @@ computes a fare between two stops on a fixed route. Do **not** modify anything u
 
 ## Key invariants / gotchas
 
+- **Every `ON DELETE CASCADE` depends on `PRAGMA foreign_keys = ON`**, set in
+  `AppDatabase.migration`'s `beforeOpen` (`lib/data/local/database/app_database.dart:32`). SQLite
+  leaves it off and drift does not turn it on, so without that line every cascade is a silent
+  no-op. That is exactly how the home screen ended up claiming "No matching routes": a re-seed
+  deleted the routes, the stops survived as orphans, the re-insert died on
+  `UNIQUE(route_id, sequence)`, `seedIfStale` returned a `Failure`, `routeListProvider` discarded
+  it, and the screen rendered an empty list under a search-shaped message.
+  `test/data/reseed_test.dart` is the regression net — a fresh install never exercises it.
+- **Never swallow a seed failure.** `routeListProvider` must throw when `seedIfStale` fails;
+  a failed seed leaves the route tables empty, and reporting that as "no routes" sends the user
+  hunting for a search problem they do not have. `home_screen.dart`'s empty view is also gated on
+  `hasQuery` so an empty list with an untouched search box reads as a load failure.
 - **Do not hardcode or curate popularity list.** "Most popular routes" on the home screen is
   derived from per-route `usageCount` + `lastUsedAt` (Drift `JeepneyRoutes` schema v2,
   `RouteDao.recordUsage` / `getPopularRoutes`). Trigger: `ref.listen` in the fare calculator
-  fires `recordRouteUsage` when a selection becomes complete.
+  fires `recordRouteUsage` when a selection becomes complete. Usage is keyed by `codeName`, not
+  row id, precisely so a re-seed can carry it across.
 - Route files are `name` + integer `kmIndex` (cumulative km) only, and all 69 are strictly
   monotonic. The diagram is still a schematic CustomPainter, not a geo map.
 - **Selection bug fix**: `stop_picker_sheet.dart` sets
@@ -78,6 +91,8 @@ flutter build apk --release          # output: build/app/outputs/flutter-apk/app
 flutter test test/core/utils/fare_calculator_test.dart
 flutter test test/data/route_and_fare_test.dart
 flutter test test/data/geo/
+flutter test test/data/reseed_test.dart       # the re-seed path; a fresh install skips it
+flutter test test/features/home/
 python3 tool/place_stops.py            # regenerates assets/geo/stops.json
 ```
 
@@ -93,10 +108,16 @@ discounted `Money(1280)`, saving `Money(320)`; end-to-end closeTo `16.0` / `12.8
 
 ## State of the world (what a fresh session should assume)
 
-- 72 tests passing (41 fare/route + 31 geo data), `flutter analyze` clean, release APK built
-  (57.7 MB, **unsigned**, and predating the geo layer).
+- 95 tests passing (41 fare/route + 31 geo data + 7 re-seed + 10 home/provider + 6 fare card),
+  `flutter analyze` clean, release APK built (57.7 MB, **unsigned**, and predating the geo layer).
 - The geo layer is seeded and reachable (`RouteRepository.getGeometry` / `getLandmarks`,
-  `route_geometries` + `landmark_entries` tables) but **no UI draws it yet**.
+  `route_geometries` + `landmark_entries` tables); the fare card now shows the measured road
+  distance beside the priced km, but **no UI draws the geometry** yet.
+- The home-screen "no routes" bug is fixed and covered. If the user reports it again on device,
+  suspect the app's database file, not the query: the re-seed now cascades correctly, so an
+  empty list means seeding genuinely failed and the error view should be showing.
+- On-device selection persistence after the picker closes is still unresolved — that is the next
+  open item, and the `[PICK]` debug logs are still in place for it.
 - Wiring lives in `data/providers/route_providers.dart`, `data/repositories/route_repository.dart`,
   screen `features/fare_calculator/presentation/screens/fare_calculator_screen.dart`,
   widgets `stop_picker_sheet.dart`, `route_diagram.dart`, `fare_estimate_card.dart`,

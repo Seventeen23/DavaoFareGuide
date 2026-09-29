@@ -142,9 +142,26 @@ boarding and drop-off stops is asserted in tests.
   invariant that a measured road distance never changes a fare
 - `test/data/geo/unverified_assets_test.dart` — the quarantined geometry is unbundled and never
   reaches the database
+- `reseed_test.dart` — the re-seed path: cascades are armed, a changed asset fingerprint rebuilds
+  every route, and popularity history survives the rebuild. A fresh install never exercises this.
+- `test/features/home/home_route_list_test.dart` — what the home screen is handed on a cold start:
+  an untouched search box never filters, and a failed seed surfaces as an error rather than an
+  empty list wearing a search-shaped message
+- `test/features/fare_calculator/fare_estimate_card_test.dart` — the road distance is shown beside
+  the priced km, and never in place of it
 
 The geo tests read the generated files as well as the parsers, so a change to
 `tool/place_stops.py` that quietly drops one of its guarantees fails the suite.
+
+### Foreign keys
+
+SQLite ships with `PRAGMA foreign_keys` off, and drift does not turn it on. Every
+`ON DELETE CASCADE` in `app_tables.dart` — stops from routes, trips from routes, route landmarks
+from both — is therefore a silent no-op unless `AppDatabase.migration`'s `beforeOpen` sets the
+pragma. It does. This matters because `RouteDao.deleteRouteData` leans on the routes→stops
+cascade: with it off, a re-seed orphans every stop row and then dies on
+`UNIQUE(route_id, sequence)`, which surfaces to the user as a route list that is suddenly empty.
+`test/data/reseed_test.dart` asserts the pragma is on before it asserts anything about reseeds.
 
 ## Code generation
 

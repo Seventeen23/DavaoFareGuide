@@ -47,6 +47,14 @@ class TripDistance {
   /// change can never make a fare cheaper.
   int get wholeKilometers => (decimetres + decimetresPerKilometer - 1) ~/ decimetresPerKilometer;
 
+  /// Distance in kilometres to one decimal place, for display only.
+  ///
+  /// The fare is quoted in whole kilometres, so this is never used to price
+  /// anything. It exists so the measured distance can be shown next to the fare
+  /// as the number the passenger actually rides: a 5.8 km road trip billed on
+  /// 6 km of published marks.
+  double get kilometers => decimetres / decimetresPerKilometer;
+
   @override
   bool operator ==(Object other) =>
       other is TripDistance &&

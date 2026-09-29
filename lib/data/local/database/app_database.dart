@@ -30,6 +30,13 @@ class AppDatabase extends _$AppDatabase {
 
   @override
   MigrationStrategy get migration => MigrationStrategy(
+    beforeOpen: (details) async {
+      // SQLite ships with foreign keys off and never turns them on by itself.
+      // Every ON DELETE CASCADE in app_tables.dart is silently a no-op without
+      // this, which makes a re-seed hit UNIQUE(route_id, sequence) on the
+      // orphaned stops and leave the user with an empty route list.
+      await customStatement('PRAGMA foreign_keys = ON');
+    },
     onUpgrade: (migrator, from, to) async {
       if (from < 2) {
         // Popular-route ranking. Existing installs start with no usage history,

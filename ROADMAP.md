@@ -126,6 +126,11 @@ Landed:
 - [x] `test/data/geo/` — 31 tests over the generated data: placement rows must match the route
       files, interpolated stops must publish no distance, disputed routes must publish none at
       all, coordinates must stay inside Davao, quarantined data must never reach the database
+- [x] `test/data/reseed_test.dart` — the re-seed path a fresh install never takes: cascades are
+      armed (`PRAGMA foreign_keys`), a changed asset fingerprint rebuilds all 69 routes with their
+      stops and geometry, and popularity history survives by `codeName`
+- [x] `test/features/home/home_route_list_test.dart` — an untouched search box never filters, and
+      a failed seed surfaces as an error instead of an empty list under "No matching routes"
 
 Still open:
 
@@ -163,6 +168,9 @@ Risks / notes:
 
 ## Known issues
 
+- On-device selection persistence after the stop picker closes is still unresolved. The picker
+  returns a selection that the fare screen does not keep; `[PICK]` debug logs are in place and
+  `fareSelectionProvider`'s `autoDispose` is the prime suspect.
 - `RouteRepository` currently owns asset parsing and database seeding together. Split parsing
   (`RouteFileParser` consumers) from persistence when a second route source is added.
 - The AVD renders via Mesa `lavapipe`, which is correct but slow. Frame timings sit well above

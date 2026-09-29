@@ -1,5 +1,6 @@
 import 'package:davao_jeepney/core/utils/fare_calculator.dart';
 import 'package:davao_jeepney/core/utils/money.dart';
+import 'package:davao_jeepney/core/utils/trip_distance.dart';
 import 'package:davao_jeepney/data/models/passenger_category.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -126,6 +127,38 @@ void main() {
           expect(total.centavos, greaterThanOrEqualTo(0));
         }
       }
+    });
+  });
+
+  group('TripDistance', () {
+    test('reports the road distance to one decimal place', () {
+      expect(const TripDistance.precise(58).kilometers, closeTo(5.8, 0.001));
+      expect(const TripDistance.precise(0).kilometers, 0);
+    });
+
+    test('rounds a measured distance up to the billed kilometre', () {
+      // 5.8 km of road bills as 6 km, never 5: the tariff is per whole
+      // kilometre, and rounding to nearest could make a fare cheaper.
+      expect(const TripDistance.precise(58).wholeKilometers, 6);
+      expect(const TripDistance.precise(50).wholeKilometers, 5);
+      expect(const TripDistance.precise(51).wholeKilometers, 6);
+    });
+
+    test('keeps measured and estimated distances distinguishable', () {
+      expect(const TripDistance.precise(58).isPrecise, isTrue);
+      expect(const TripDistance.precise(58).isEstimated, isFalse);
+      expect(
+        TripDistance.estimatedKilometers(5).isEstimated,
+        isTrue,
+        reason: 'a trip priced on the published marks is not a measurement',
+      );
+    });
+
+    test('is direction independent', () {
+      expect(
+        const TripDistance.precise(58),
+        const TripDistance.precise(58),
+      );
     });
   });
 

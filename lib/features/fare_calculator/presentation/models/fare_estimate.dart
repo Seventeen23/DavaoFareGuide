@@ -28,6 +28,9 @@ class FareEstimate extends Equatable {
   /// Kilometres the fare was priced on.
   int get distanceKm => regular.distanceKm;
 
+  /// The measured road distance, when there is one worth showing.
+  TripDistance? get shownRoadDistance => hasRoadDistance ? roadDistance : null;
+
   /// Whether the road measurement is worth showing next to the fare.
   ///
   /// Requires both ends placed, and at least half a kilometre of separation,

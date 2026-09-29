@@ -48,8 +48,9 @@ lib/
   data/        Drift database, DAOs, repositories, models, providers
   features/    home/, fare_calculator/
 assets/routes/ 69 legacy route files
-test/          fare logic, route parsing, end-to-end fare checks
-tool/          route manifest generator
+assets/geo/    generated stop placements, route geometry, landmarks
+test/          fare logic, route parsing, re-seeding, end-to-end fare checks
+tool/          route manifest, geometry, and stop-placement generators
 ```
 
 See [ARCHITECTURE.md](ARCHITECTURE.md) for the details and [ROADMAP.md](ROADMAP.md) for planned work.

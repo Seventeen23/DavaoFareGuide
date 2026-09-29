@@ -136,6 +136,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             data: (routes) => _RouteSliverList(
               routes: routes,
               totalCount: ref.watch(routeListProvider).value?.length ?? routes.length,
+              hasQuery: _hasQuery,
               onRouteTap: (route) => context.push(Routes.rideFor(route.codeName)),
             ),
           ),
@@ -276,22 +277,34 @@ class _RouteSliverList extends StatelessWidget {
   const _RouteSliverList({
     required this.routes,
     required this.totalCount,
+    required this.hasQuery,
     required this.onRouteTap,
   });
 
   final List<JeepneyRoute> routes;
   final int totalCount;
+  final bool hasQuery;
   final ValueChanged<JeepneyRoute> onRouteTap;
 
   @override
   Widget build(BuildContext context) {
     if (routes.isEmpty) {
-      return const SliverFillRemaining(
+      // An empty list with no query is not a search miss. It means the bundled
+      // data is not there, and telling the user to try a different landmark
+      // sends them looking for a problem they do not have.
+      return SliverFillRemaining(
         hasScrollBody: false,
-        child: AppEmptyView(
-          title: 'No matching routes',
-          message: 'Try a different destination or landmark.',
-        ),
+        child: hasQuery
+            ? const AppEmptyView(
+                title: 'No matching routes',
+                message: 'Try a different destination or landmark.',
+              )
+            : const AppEmptyView(
+                icon: Icons.error_outline_rounded,
+                title: 'No routes available',
+                message: 'The bundled route data could not be loaded. '
+                    'Try restarting the app.',
+              ),
       );
     }
 

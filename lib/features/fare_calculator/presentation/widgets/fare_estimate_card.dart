@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../app/theme/app_theme.dart';
 import '../../../../core/utils/fare_calculator.dart';
 import '../../../../core/utils/money.dart';
+import '../../../../core/utils/trip_distance.dart';
 import '../../../../data/models/passenger_category.dart';
 import '../models/fare_estimate.dart';
 
@@ -14,7 +15,6 @@ class FareEstimateCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
-    final rules = estimate.fareRules;
 
     if (estimate.isIdenticalStops) {
       return _NoticeCard(
@@ -56,7 +56,10 @@ class FareEstimateCard extends StatelessWidget {
                   ),
                 ),
                 const Spacer(),
-                _DistanceChip(distanceKm: estimate.distanceKm),
+                _DistanceChip(
+                  distanceKm: estimate.distanceKm,
+                  roadDistance: estimate.shownRoadDistance,
+                ),
               ],
             ),
           ),
@@ -107,10 +110,7 @@ class FareEstimateCard extends StatelessWidget {
               children: [
                 Expanded(
                   child: Text(
-                    '${rules.baseFare.pesos.toStringAsFixed(2)} base '
-                    '(first ${rules.includedKilometers} km)  ·  '
-                    '+${rules.perKilometer.pesos.toStringAsFixed(2)}/km  ·  '
-                    '−${rules.discountPercent}% discount',
+                    _rulesSummary(estimate),
                     style: textTheme.bodySmall?.copyWith(
                       color: Colors.white.withValues(alpha: 0.6),
                       fontSize: 11.5,
@@ -129,6 +129,24 @@ class FareEstimateCard extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  /// The tariff line, plus a note on which distance the fare follows.
+  ///
+  /// Worth saying, because the card shows two distances. The fare follows the
+  /// published kilometre marks; the road figure on the chip is a measurement
+  /// and is never charged. The road number itself is not repeated here — it is
+  /// already on the chip, and saying it twice reads like two prices.
+  static String _rulesSummary(FareEstimate estimate) {
+    final rules = estimate.fareRules;
+    final charged = estimate.shownRoadDistance == null
+        ? 'charged on the route’s published km'
+        : 'charged on the published km, not the road distance';
+
+    return '${rules.baseFare.pesos.toStringAsFixed(2)} base '
+        '(first ${rules.includedKilometers} km)  ·  '
+        '+${rules.perKilometer.pesos.toStringAsFixed(2)}/km  ·  '
+        '−${rules.discountPercent}% discount  ·  $charged';
   }
 }
 
@@ -256,26 +274,49 @@ class _PricePane extends StatelessWidget {
 }
 
 class _DistanceChip extends StatelessWidget {
-  const _DistanceChip({required this.distanceKm});
+  const _DistanceChip({required this.distanceKm, this.roadDistance});
 
+  /// Whole kilometres the fare was priced on, from the published marks.
   final int distanceKm;
+
+  /// The measured road distance, when both ends were placed on the polyline.
+  /// Display only — the fare above is priced from [distanceKm].
+  final TripDistance? roadDistance;
 
   @override
   Widget build(BuildContext context) {
+    final road = roadDistance;
+
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md, vertical: 4),
       decoration: BoxDecoration(
         color: Colors.white.withValues(alpha: 0.12),
         borderRadius: BorderRadius.circular(AppSpacing.radiusPill),
       ),
-      child: Text(
-        '$distanceKm km',
-        style: const TextStyle(
-          color: Colors.white,
-          fontSize: 12,
-          fontWeight: FontWeight.w700,
-          fontFeatures: [FontFeature.tabularFigures()],
-        ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          Text(
+            '$distanceKm km',
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 12,
+              fontWeight: FontWeight.w700,
+              fontFeatures: [FontFeature.tabularFigures()],
+            ),
+          ),
+          if (road != null)
+            Text(
+              '${road.kilometers.toStringAsFixed(1)} km by road',
+              style: TextStyle(
+                color: Colors.white.withValues(alpha: 0.6),
+                fontSize: 9.5,
+                fontWeight: FontWeight.w600,
+                fontFeatures: const [FontFeature.tabularFigures()],
+              ),
+            ),
+        ],
       ),
     );
   }

@@ -17,7 +17,14 @@ final routeRepositoryProvider = Provider<RouteRepository>((ref) {
 
 final routeListProvider = FutureProvider<List<JeepneyRoute>>((ref) async {
   final repository = ref.watch(routeRepositoryProvider);
-  await repository.seedIfStale();
+  // A failed seed leaves the route tables empty. Surfacing that as an error
+  // matters: ignoring it makes the home screen claim the user searched for
+  // something that does not exist.
+  final seedResult = await repository.seedIfStale();
+  final seedFailure = seedResult.failureOrNull;
+  if (seedFailure != null) {
+    throw seedFailure;
+  }
   final Result<List<JeepneyRoute>> result = await repository.getAllRoutes();
   return result.fold((routes) => routes, (failure) => throw failure);
 });
